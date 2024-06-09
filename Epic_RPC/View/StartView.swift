@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StartView: UIView {
+final class StartView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
