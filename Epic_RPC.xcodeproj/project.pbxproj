@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C2FAD522C162BED0085B12C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C2FAD512C162BED0085B12C /* SnapKit */; };
+		3C2FAD542C162BED0085B12C /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3C2FAD532C162BED0085B12C /* SnapKit-Dynamic */; };
+		3C2FAD572C162BFC0085B12C /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 3C2FAD562C162BFC0085B12C /* RxBlocking */; };
+		3C2FAD592C162BFC0085B12C /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3C2FAD582C162BFC0085B12C /* RxBlocking-Dynamic */; };
+		3C2FAD5B2C162BFC0085B12C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3C2FAD5A2C162BFC0085B12C /* RxCocoa */; };
+		3C2FAD5D2C162BFC0085B12C /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3C2FAD5C2C162BFC0085B12C /* RxCocoa-Dynamic */; };
+		3C2FAD5F2C162BFC0085B12C /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 3C2FAD5E2C162BFC0085B12C /* RxRelay */; };
+		3C2FAD622C162FA00085B12C /* Uiview+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FAD612C162FA00085B12C /* Uiview+Ext.swift */; };
+		3C2FAD642C1630D10085B12C /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FAD632C1630D10085B12C /* LeaderboardViewController.swift */; };
+		3C2FAD662C1636610085B12C /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FAD652C1636610085B12C /* NavBar.swift */; };
+		3C2FAD692C1639170085B12C /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 3C2FAD682C1639170085B12C /* RxGesture */; };
+		3C2FAD6C2C163FC80085B12C /* LeaderboardRaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FAD6B2C163FC80085B12C /* LeaderboardRaitingView.swift */; };
+		3C2FAD6E2C1641440085B12C /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FAD6D2C1641440085B12C /* UIStackView+Ext.swift */; };
 		CBE0C0BA2C15D5E000919D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */; };
 		CBE0C0BC2C15D5E000919D1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0BB2C15D5E000919D1E /* SceneDelegate.swift */; };
 		CBE0C0C32C15D5E100919D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE0C0C22C15D5E100919D1E /* Assets.xcassets */; };
@@ -24,6 +37,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C2FAD612C162FA00085B12C /* Uiview+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Uiview+Ext.swift"; sourceTree = "<group>"; };
+		3C2FAD632C1630D10085B12C /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		3C2FAD652C1636610085B12C /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
+		3C2FAD6B2C163FC80085B12C /* LeaderboardRaitingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRaitingView.swift; sourceTree = "<group>"; };
+		3C2FAD6D2C1641440085B12C /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		CBE0C0B62C15D5E000919D1E /* Epic_RPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epic_RPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBE0C0BB2C15D5E000919D1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,12 +65,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C2FAD522C162BED0085B12C /* SnapKit in Frameworks */,
+				3C2FAD572C162BFC0085B12C /* RxBlocking in Frameworks */,
+				3C2FAD692C1639170085B12C /* RxGesture in Frameworks */,
+				3C2FAD5F2C162BFC0085B12C /* RxRelay in Frameworks */,
+				3C2FAD5B2C162BFC0085B12C /* RxCocoa in Frameworks */,
+				3C2FAD542C162BED0085B12C /* SnapKit-Dynamic in Frameworks */,
+				3C2FAD5D2C162BFC0085B12C /* RxCocoa-Dynamic in Frameworks */,
+				3C2FAD592C162BFC0085B12C /* RxBlocking-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C2FAD602C162F870085B12C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3C2FAD612C162FA00085B12C /* Uiview+Ext.swift */,
+				3C2FAD6D2C1641440085B12C /* UIStackView+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3C2FAD6A2C163FA80085B12C /* LeaderboardScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3C2FAD632C1630D10085B12C /* LeaderboardViewController.swift */,
+				3C2FAD6B2C163FC80085B12C /* LeaderboardRaitingView.swift */,
+			);
+			path = LeaderboardScreen;
+			sourceTree = "<group>";
+		};
 		CBE0C0AD2C15D5E000919D1E = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +120,7 @@
 				CBE0C0E32C15D6B100919D1E /* View */,
 				CBE0C0E12C15D69800919D1E /* ViewController */,
 				CBE0C0E42C15D6D500919D1E /* Resources */,
+				3C2FAD602C162F870085B12C /* Extensions */,
 			);
 			path = Epic_RPC;
 			sourceTree = "<group>";
@@ -88,6 +133,7 @@
 				CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */,
 				CBE0C0D82C15D68300919D1E /* RulesViewController.swift */,
 				CBE0C0D72C15D68300919D1E /* StartViewController.swift */,
+				3C2FAD6A2C163FA80085B12C /* LeaderboardScreen */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -109,6 +155,7 @@
 				CBE0C0CE2C15D67100919D1E /* ResultView.swift */,
 				CBE0C0D12C15D67100919D1E /* RulesView.swift */,
 				CBE0C0CF2C15D67100919D1E /* StartView.swift */,
+				3C2FAD652C1636610085B12C /* NavBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,6 +186,16 @@
 			dependencies = (
 			);
 			name = Epic_RPC;
+			packageProductDependencies = (
+				3C2FAD512C162BED0085B12C /* SnapKit */,
+				3C2FAD532C162BED0085B12C /* SnapKit-Dynamic */,
+				3C2FAD562C162BFC0085B12C /* RxBlocking */,
+				3C2FAD582C162BFC0085B12C /* RxBlocking-Dynamic */,
+				3C2FAD5A2C162BFC0085B12C /* RxCocoa */,
+				3C2FAD5C2C162BFC0085B12C /* RxCocoa-Dynamic */,
+				3C2FAD5E2C162BFC0085B12C /* RxRelay */,
+				3C2FAD682C1639170085B12C /* RxGesture */,
+			);
 			productName = Epic_RPC;
 			productReference = CBE0C0B62C15D5E000919D1E /* Epic_RPC.app */;
 			productType = "com.apple.product-type.application";
@@ -167,6 +224,11 @@
 				Base,
 			);
 			mainGroup = CBE0C0AD2C15D5E000919D1E;
+			packageReferences = (
+				3C2FAD502C162BED0085B12C /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3C2FAD552C162BFC0085B12C /* XCRemoteSwiftPackageReference "RxSwift" */,
+				3C2FAD672C1639170085B12C /* XCRemoteSwiftPackageReference "RxGesture" */,
+			);
 			productRefGroup = CBE0C0B72C15D5E000919D1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -193,18 +255,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C2FAD642C1630D10085B12C /* LeaderboardViewController.swift in Sources */,
 				CBE0C0E02C15D68300919D1E /* FightLoadViewController.swift in Sources */,
 				CBE0C0DD2C15D68300919D1E /* RulesViewController.swift in Sources */,
 				CBE0C0D62C15D67100919D1E /* RulesView.swift in Sources */,
 				CBE0C0BA2C15D5E000919D1E /* AppDelegate.swift in Sources */,
+				3C2FAD6C2C163FC80085B12C /* LeaderboardRaitingView.swift in Sources */,
+				3C2FAD662C1636610085B12C /* NavBar.swift in Sources */,
 				CBE0C0D32C15D67100919D1E /* ResultView.swift in Sources */,
 				CBE0C0D42C15D67100919D1E /* StartView.swift in Sources */,
 				CBE0C0DC2C15D68300919D1E /* StartViewController.swift in Sources */,
+				3C2FAD622C162FA00085B12C /* Uiview+Ext.swift in Sources */,
 				CBE0C0BC2C15D5E000919D1E /* SceneDelegate.swift in Sources */,
 				CBE0C0D22C15D67100919D1E /* FightLoadView.swift in Sources */,
 				CBE0C0DE2C15D68300919D1E /* GameViewController.swift in Sources */,
 				CBE0C0D52C15D67100919D1E /* GameView.swift in Sources */,
 				CBE0C0DF2C15D68300919D1E /* ResultViewController.swift in Sources */,
+				3C2FAD6E2C1641440085B12C /* UIStackView+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +417,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y5B46GH7KM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Epic_RPC/Info.plist;
+				INFOPLIST_FILE = Epic_RPC/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -377,7 +444,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y5B46GH7KM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Epic_RPC/Info.plist;
+				INFOPLIST_FILE = Epic_RPC/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -417,6 +484,76 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3C2FAD502C162BED0085B12C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		3C2FAD552C162BFC0085B12C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		3C2FAD672C1639170085B12C /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C2FAD512C162BED0085B12C /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C2FAD502C162BED0085B12C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3C2FAD532C162BED0085B12C /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C2FAD502C162BED0085B12C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		3C2FAD562C162BFC0085B12C /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C2FAD552C162BFC0085B12C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		3C2FAD582C162BFC0085B12C /* RxBlocking-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C2FAD552C162BFC0085B12C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxBlocking-Dynamic";
+		};
+		3C2FAD5A2C162BFC0085B12C /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C2FAD552C162BFC0085B12C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		3C2FAD5C2C162BFC0085B12C /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C2FAD552C162BFC0085B12C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		3C2FAD5E2C162BFC0085B12C /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C2FAD552C162BFC0085B12C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		3C2FAD682C1639170085B12C /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C2FAD672C1639170085B12C /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CBE0C0AE2C15D5E000919D1E /* Project object */;
 }

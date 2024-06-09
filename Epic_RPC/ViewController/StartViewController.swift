@@ -6,24 +6,53 @@
 //
 
 import UIKit
+import SnapKit
+import RxSwift
+import RxCocoa
 
 class StartViewController: UIViewController {
-
+    
+    private let button: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("open leaderboard", for: .normal)
+        btn.backgroundColor = .black
+        return btn
+    }()
+    
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .green
+        setupUI()
+        setupBindings()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupBindings() {
+        button.rx.tap
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                let leaderboardVC = LeaderboardViewController()
+                leaderboardVC.modalPresentationStyle = .fullScreen
+                self?.navigationController?.present(leaderboardVC, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
-    */
+}
 
+private extension StartViewController {
+    func setupUI() {
+        view.backgroundColor = .appBackground
+        addSubviews()
+        setupConstraints()
+    }
+    
+    func addSubviews() {
+        view.addSubview(button)
+    }
+    
+    func setupConstraints() {
+        button.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
 }
