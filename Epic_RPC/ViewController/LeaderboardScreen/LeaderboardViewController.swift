@@ -79,6 +79,22 @@ class LeaderboardViewController: UIViewController {
         return label
     }()
     
+    private let tableView: UITableView = {
+        let table = UITableView()
+        table.register(LeaderbordPlayerCell.self, forCellReuseIdentifier: "LeaderbordPlayerCell")
+        return table
+    }()
+    
+    private let players: [Player] = [
+        .init(image: "character2", name: "Name name", score: 231, rate: 34),
+        .init(image: "character1", name: "Test name", score: 231, rate: 34),
+        .init(image: "character4", name: "Person name", score: 231, rate: 34),
+        .init(image: "character1", name: "OOo name", score: 231, rate: 34),
+        .init(image: "character1", name: "Test name", score: 231, rate: 34),
+        .init(image: "character4", name: "Person name", score: 231, rate: 34),
+        .init(image: "character1", name: "OOo name", score: 231, rate: 34)
+    ]
+    
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -98,18 +114,36 @@ class LeaderboardViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+}
+
+extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return players.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderbordPlayerCell", for: indexPath) as! LeaderbordPlayerCell
+        let player = players[indexPath.row]
+        cell.configure(with: player, position: indexPath.row + 1)
+        return cell
+    }
 }
 
 private extension LeaderboardViewController {
     func setupUI() {
         view.backgroundColor = .appLeaderboardBackground
         navigationController?.navigationBar.isHidden = true
+        tableView.delegate = self
+        tableView.dataSource = self
         addSubviews()
         setupConstraints()
     }
     
     func addSubviews() {
-        
         playerNameView.addSubview(playerNameLabel)
         
         playerStack.addArrangedSubviews(
@@ -120,7 +154,8 @@ private extension LeaderboardViewController {
         leaderBoardView.addSubviews(
             leaderBoardImage,
             playersLabel,
-            rateLabel
+            rateLabel,
+            tableView
         )
 
         view.addSubviews(
@@ -207,6 +242,16 @@ private extension LeaderboardViewController {
             make
                 .leading.trailing.bottom
                 .equalToSuperview()
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make
+                .top
+                .equalTo(leaderBoardImage.snp.bottom)
+            make
+                .leading.trailing.bottom
+                .equalToSuperview()
+                .inset(20)
         }
     }
 }
