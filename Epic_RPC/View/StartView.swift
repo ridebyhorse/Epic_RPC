@@ -8,10 +8,11 @@
 import UIKit
 
 final class StartView: UIView {
-    private let settingsButton = UIButton()
-    private let helpInfoButton = UIButton()
-    private let startButton = UIButton()
-    private let resultsButton = UIButton()
+    let settingsButton = UIButton()
+    let rulesButton = UIButton()
+    let startButton = UIButton()
+    let resultsButton = UIButton()
+    
     private let backgroundImageView = UIImageView(
         image: UIImage(named: "imageStartVC")
     )
@@ -35,13 +36,13 @@ private extension StartView {
     func setupViews() {
         backgroundColor = .systemGray6
         
-        settingsButton.setBackgroundImage(UIImage(named: "settingsStartVC"), for: .normal)
+        settingsButton.setBackgroundImage(UIImage(named: "settingsButtonStartVC"), for: .normal)
         settingsButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(settingsButton)
         
-        helpInfoButton.setBackgroundImage(UIImage(named: "helpInfoStartVC"), for: .normal)
-        helpInfoButton.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(helpInfoButton)
+        rulesButton.setBackgroundImage(UIImage(named: "rulesButtonStartVC"), for: .normal)
+        rulesButton.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(rulesButton)
         
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundImageView)
@@ -57,10 +58,10 @@ private extension StartView {
             settingsButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             settingsButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
             
-            helpInfoButton.widthAnchor.constraint(equalToConstant: 35),
-            helpInfoButton.heightAnchor.constraint(equalToConstant: 35),
-            helpInfoButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            helpInfoButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            rulesButton.widthAnchor.constraint(equalToConstant: 35),
+            rulesButton.heightAnchor.constraint(equalToConstant: 35),
+            rulesButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            rulesButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
             
             backgroundImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
             backgroundImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
