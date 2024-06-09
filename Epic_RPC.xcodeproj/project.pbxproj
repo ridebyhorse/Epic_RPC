@@ -9,21 +9,37 @@
 /* Begin PBXBuildFile section */
 		CBE0C0BA2C15D5E000919D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */; };
 		CBE0C0BC2C15D5E000919D1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0BB2C15D5E000919D1E /* SceneDelegate.swift */; };
-		CBE0C0BE2C15D5E000919D1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0BD2C15D5E000919D1E /* ViewController.swift */; };
-		CBE0C0C12C15D5E000919D1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE0C0BF2C15D5E000919D1E /* Main.storyboard */; };
 		CBE0C0C32C15D5E100919D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE0C0C22C15D5E100919D1E /* Assets.xcassets */; };
 		CBE0C0C62C15D5E100919D1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE0C0C42C15D5E100919D1E /* LaunchScreen.storyboard */; };
+		CBE0C0D22C15D67100919D1E /* FightLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0CD2C15D67100919D1E /* FightLoadView.swift */; };
+		CBE0C0D32C15D67100919D1E /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0CE2C15D67100919D1E /* ResultView.swift */; };
+		CBE0C0D42C15D67100919D1E /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0CF2C15D67100919D1E /* StartView.swift */; };
+		CBE0C0D52C15D67100919D1E /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0D02C15D67100919D1E /* GameView.swift */; };
+		CBE0C0D62C15D67100919D1E /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0D12C15D67100919D1E /* RulesView.swift */; };
+		CBE0C0DC2C15D68300919D1E /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0D72C15D68300919D1E /* StartViewController.swift */; };
+		CBE0C0DD2C15D68300919D1E /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0D82C15D68300919D1E /* RulesViewController.swift */; };
+		CBE0C0DE2C15D68300919D1E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0D92C15D68300919D1E /* GameViewController.swift */; };
+		CBE0C0DF2C15D68300919D1E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */; };
+		CBE0C0E02C15D68300919D1E /* FightLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CBE0C0B62C15D5E000919D1E /* Epic_RPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epic_RPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBE0C0BB2C15D5E000919D1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CBE0C0BD2C15D5E000919D1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CBE0C0C02C15D5E000919D1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBE0C0C22C15D5E100919D1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBE0C0C52C15D5E100919D1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBE0C0C72C15D5E100919D1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBE0C0CD2C15D67100919D1E /* FightLoadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FightLoadView.swift; sourceTree = "<group>"; };
+		CBE0C0CE2C15D67100919D1E /* ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		CBE0C0CF2C15D67100919D1E /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		CBE0C0D02C15D67100919D1E /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		CBE0C0D12C15D67100919D1E /* RulesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		CBE0C0D72C15D68300919D1E /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		CBE0C0D82C15D68300919D1E /* RulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		CBE0C0D92C15D68300919D1E /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FightLoadViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +72,55 @@
 		CBE0C0B82C15D5E000919D1E /* Epic_RPC */ = {
 			isa = PBXGroup;
 			children = (
+				CBE0C0E22C15D6A900919D1E /* App */,
+				CBE0C0E32C15D6B100919D1E /* View */,
+				CBE0C0E12C15D69800919D1E /* ViewController */,
+				CBE0C0E42C15D6D500919D1E /* Resources */,
+			);
+			path = Epic_RPC;
+			sourceTree = "<group>";
+		};
+		CBE0C0E12C15D69800919D1E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */,
+				CBE0C0D92C15D68300919D1E /* GameViewController.swift */,
+				CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */,
+				CBE0C0D82C15D68300919D1E /* RulesViewController.swift */,
+				CBE0C0D72C15D68300919D1E /* StartViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CBE0C0E22C15D6A900919D1E /* App */ = {
+			isa = PBXGroup;
+			children = (
 				CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */,
 				CBE0C0BB2C15D5E000919D1E /* SceneDelegate.swift */,
-				CBE0C0BD2C15D5E000919D1E /* ViewController.swift */,
-				CBE0C0BF2C15D5E000919D1E /* Main.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CBE0C0E32C15D6B100919D1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBE0C0CD2C15D67100919D1E /* FightLoadView.swift */,
+				CBE0C0D02C15D67100919D1E /* GameView.swift */,
+				CBE0C0CE2C15D67100919D1E /* ResultView.swift */,
+				CBE0C0D12C15D67100919D1E /* RulesView.swift */,
+				CBE0C0CF2C15D67100919D1E /* StartView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBE0C0E42C15D6D500919D1E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				CBE0C0C22C15D5E100919D1E /* Assets.xcassets */,
 				CBE0C0C42C15D5E100919D1E /* LaunchScreen.storyboard */,
 				CBE0C0C72C15D5E100919D1E /* Info.plist */,
 			);
-			path = Epic_RPC;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +183,6 @@
 			files = (
 				CBE0C0C62C15D5E100919D1E /* LaunchScreen.storyboard in Resources */,
 				CBE0C0C32C15D5E100919D1E /* Assets.xcassets in Resources */,
-				CBE0C0C12C15D5E000919D1E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +193,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBE0C0BE2C15D5E000919D1E /* ViewController.swift in Sources */,
+				CBE0C0E02C15D68300919D1E /* FightLoadViewController.swift in Sources */,
+				CBE0C0DD2C15D68300919D1E /* RulesViewController.swift in Sources */,
+				CBE0C0D62C15D67100919D1E /* RulesView.swift in Sources */,
 				CBE0C0BA2C15D5E000919D1E /* AppDelegate.swift in Sources */,
+				CBE0C0D32C15D67100919D1E /* ResultView.swift in Sources */,
+				CBE0C0D42C15D67100919D1E /* StartView.swift in Sources */,
+				CBE0C0DC2C15D68300919D1E /* StartViewController.swift in Sources */,
 				CBE0C0BC2C15D5E000919D1E /* SceneDelegate.swift in Sources */,
+				CBE0C0D22C15D67100919D1E /* FightLoadView.swift in Sources */,
+				CBE0C0DE2C15D68300919D1E /* GameViewController.swift in Sources */,
+				CBE0C0D52C15D67100919D1E /* GameView.swift in Sources */,
+				CBE0C0DF2C15D68300919D1E /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CBE0C0BF2C15D5E000919D1E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CBE0C0C02C15D5E000919D1E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CBE0C0C42C15D5E100919D1E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,7 +353,6 @@
 				INFOPLIST_FILE = Epic_RPC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,7 +380,6 @@
 				INFOPLIST_FILE = Epic_RPC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
