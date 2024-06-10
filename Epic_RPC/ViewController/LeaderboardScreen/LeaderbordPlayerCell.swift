@@ -8,12 +8,16 @@
 import UIKit
 
 class LeaderbordPlayerCell: UITableViewCell {
+    private let positionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 9, weight: .bold)
+        label.textColor = .gray
+        return label
+    }()
     
     private let playerImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 22.5
-        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -26,36 +30,35 @@ class LeaderbordPlayerCell: UITableViewCell {
     
     private let playerScoreLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.textColor = .gray
+        label.font = .systemFont(ofSize: 14, weight: .black)
+        label.textColor = .black
         return label
     }()
     
     private let playerRateLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.textColor = .gray
-        return label
-    }()
-    
-    private let positionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .systemFont(ofSize: 14, weight: .black)
         label.textColor = .black
         return label
     }()
-    
+        
     private let spacer = UIView()
     
-    private let containerStack: UIStackView = {
+    private let contentStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.spacing = 5
-        stack.alignment = .fill
-        stack.distribution = .fillProportionally
+        stack.spacing = 20
         return stack
     }()
     
+    private let medalImage: UIImageView = {
+        let imageView = UIImageView(image: .gold)
+        imageView.isHidden = true
+        return imageView
+    }()
+
+    private let containerView = UIView()
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -70,26 +73,40 @@ class LeaderbordPlayerCell: UITableViewCell {
         playerNameLabel.text = player.name
         playerScoreLabel.text = "\(player.score)"
         playerRateLabel.text = "\(player.rate)%"
-        
+
         switch position {
-        case 1: backgroundColor = .leaderbordGold
-        case 2: backgroundColor = .leaderbordSilver
-        case 3: backgroundColor = .leaderbordBronze
+        case 1:
+            containerView.backgroundColor = .leaderbordGold.withAlphaComponent(0.5)
+            containerView.layer.cornerRadius = 20
+            medalImage.image = .gold
+            medalImage.isHidden = false
+        case 2:
+            containerView.backgroundColor = .leaderbordSilver.withAlphaComponent(0.5)
+            containerView.layer.cornerRadius = 20
+            medalImage.image = .silver
+            medalImage.isHidden = false
+        case 3:
+            containerView.backgroundColor = .leaderbordBronze.withAlphaComponent(0.5)
+            containerView.layer.cornerRadius = 20
+            medalImage.image = .bronze
+            medalImage.isHidden = false
         default:
-            backgroundColor = .white
             positionLabel.text = "\(position)"
+            containerView.snp.makeConstraints { make in
+                make.height.equalTo(40)
+            }
+            medalImage.isHidden = true
         }
     }
-    
+
     private func setupUI() {
-        layer.cornerRadius = 20
         selectionStyle = .none
         addSubviews()
         setupConstraints()
     }
     
     private func addSubviews() {
-        containerStack.addArrangedSubviews(
+        contentStack.addArrangedSubviews(
             positionLabel,
             playerImageView,
             playerNameLabel,
@@ -97,18 +114,54 @@ class LeaderbordPlayerCell: UITableViewCell {
             playerScoreLabel,
             playerRateLabel
         )
-        contentView.addSubview(containerStack)
+        
+        containerView.addSubviews(
+            contentStack,
+            medalImage
+        )
+        contentView.addSubview(containerView)
     }
     
     private func setupConstraints() {
+        
         playerImageView.snp.makeConstraints { make in
-            make.size.equalTo(45)
-        }
-        containerStack.snp.makeConstraints { make in
             make
-                .edges
+                .size
+                .equalTo(35)
+        }
+        
+        contentStack.snp.makeConstraints { make in
+            make
+                .top.leading.bottom
                 .equalToSuperview()
-                .inset(10)
+                .inset(5)
+            make
+                .trailing
+                .equalToSuperview()
+                .inset(20)
+        }
+        
+        medalImage.snp.makeConstraints { make in
+            make
+                .centerY
+                .equalTo(containerView.snp.centerY)
+            make
+                .trailing
+                .equalTo(containerView.snp.trailing)
+                .offset(5)
+            make
+                .size
+                .equalTo(17)
+        }
+        
+        containerView.snp.makeConstraints { make in
+            make
+                .top.leading.trailing.bottom
+                .equalToSuperview()
+                .inset(5)
+            
+            make.height
+                .equalTo(60)
         }
     }
 }

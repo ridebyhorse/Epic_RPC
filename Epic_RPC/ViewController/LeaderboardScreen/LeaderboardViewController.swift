@@ -85,15 +85,7 @@ class LeaderboardViewController: UIViewController {
         return table
     }()
     
-    private let players: [Player] = [
-        .init(image: "character2", name: "Name name", score: 231, rate: 34),
-        .init(image: "character1", name: "Test name", score: 231, rate: 34),
-        .init(image: "character4", name: "Person name", score: 231, rate: 34),
-        .init(image: "character1", name: "OOo name", score: 231, rate: 34),
-        .init(image: "character1", name: "Test name", score: 231, rate: 34),
-        .init(image: "character4", name: "Person name", score: 231, rate: 34),
-        .init(image: "character1", name: "OOo name", score: 231, rate: 34)
-    ]
+    private let players: [Player] = StorageService.shared.getMockPlayers()
     
     private let disposeBag = DisposeBag()
     
@@ -122,9 +114,6 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
         return players.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderbordPlayerCell", for: indexPath) as! LeaderbordPlayerCell
         let player = players[indexPath.row]
@@ -139,6 +128,7 @@ private extension LeaderboardViewController {
         navigationController?.navigationBar.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         addSubviews()
         setupConstraints()
     }

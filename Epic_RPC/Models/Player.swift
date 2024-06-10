@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Player {
+struct Player: Codable {
     let image: String?
     let name: String
     let score: Int
