@@ -8,22 +8,30 @@
 import UIKit
 
 class ResultViewController: UIViewController {
+    
+    let resultView = ResultView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationItem.setHidesBackButton(true, animated: true)
+        view = resultView
+        addActions()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func addActions() {
+        
+        let homeButtonPressed = UIAction { [unowned self] _ in
+            let startVC = StartViewController()
+            navigationController?.pushViewController(startVC, animated: true)
+        }
+        
+        let repeatButtonPressed = UIAction { [unowned self] _ in
+            let fightLoadVC = FightLoadViewController()
+            navigationController?.pushViewController(fightLoadVC, animated: true)
+        }
+        
+        resultView.homeButton.addAction(homeButtonPressed, for: .touchUpInside)
+        resultView.repeatButton.addAction(repeatButtonPressed, for: .touchUpInside)
     }
-    */
-
 }
