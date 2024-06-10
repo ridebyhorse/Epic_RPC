@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB3989262C16450700E77097 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3989252C16450700E77097 /* Rubik-Bold.ttf */; };
+		CB3989292C16462900E77097 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3989272C16462900E77097 /* Rubik-Regular.ttf */; };
+		CB39892E2C1646C800E77097 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */; };
+		CB3989342C164C2100E77097 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3989332C164C2100E77097 /* CustomFont.swift */; };
 		CBE0C0BA2C15D5E000919D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */; };
 		CBE0C0BC2C15D5E000919D1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0BB2C15D5E000919D1E /* SceneDelegate.swift */; };
 		CBE0C0C32C15D5E100919D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE0C0C22C15D5E100919D1E /* Assets.xcassets */; };
@@ -24,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB3989252C16450700E77097 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		CB3989272C16462900E77097 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
+		CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		CB3989332C164C2100E77097 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		CBE0C0B62C15D5E000919D1E /* Epic_RPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epic_RPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBE0C0BB2C15D5E000919D1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +61,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB39891E2C16410F00E77097 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				CB3989332C164C2100E77097 /* CustomFont.swift */,
+				CB3989272C16462900E77097 /* Rubik-Regular.ttf */,
+				CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */,
+				CB3989252C16450700E77097 /* Rubik-Bold.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		CBE0C0AD2C15D5E000919D1E = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +94,7 @@
 				CBE0C0E22C15D6A900919D1E /* App */,
 				CBE0C0E32C15D6B100919D1E /* View */,
 				CBE0C0E12C15D69800919D1E /* ViewController */,
+				CB39891E2C16410F00E77097 /* Font */,
 				CBE0C0E42C15D6D500919D1E /* Resources */,
 			);
 			path = Epic_RPC;
@@ -159,7 +179,7 @@
 				};
 			};
 			buildConfigurationList = CBE0C0B12C15D5E000919D1E /* Build configuration list for PBXProject "Epic_RPC" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -182,7 +202,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBE0C0C62C15D5E100919D1E /* LaunchScreen.storyboard in Resources */,
+				CB3989292C16462900E77097 /* Rubik-Regular.ttf in Resources */,
+				CB3989262C16450700E77097 /* Rubik-Bold.ttf in Resources */,
 				CBE0C0C32C15D5E100919D1E /* Assets.xcassets in Resources */,
+				CB39892E2C1646C800E77097 /* Rubik-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3989342C164C2100E77097 /* CustomFont.swift in Sources */,
 				CBE0C0E02C15D68300919D1E /* FightLoadViewController.swift in Sources */,
 				CBE0C0DD2C15D68300919D1E /* RulesViewController.swift in Sources */,
 				CBE0C0D62C15D67100919D1E /* RulesView.swift in Sources */,
