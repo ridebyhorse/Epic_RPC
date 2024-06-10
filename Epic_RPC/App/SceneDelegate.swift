@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
@@ -16,8 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let startVC = StartViewController()
-        window?.rootViewController = UINavigationController(rootViewController: startVC)
+        let navigationVC = UINavigationController(rootViewController: StartViewController())
+        window?.rootViewController = navigationVC
         window?.makeKeyAndVisible()
     }
 
