@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CBF8B272C179B20005E21B8 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF8B252C179B20005E21B8 /* UIStackView+Ext.swift */; };
+		3CBF8B282C179B20005E21B8 /* Uiview+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF8B262C179B20005E21B8 /* Uiview+Ext.swift */; };
+		3CBF8B2B2C179B27005E21B8 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF8B2A2C179B27005E21B8 /* StorageService.swift */; };
+		3CBF8B2E2C179B2C005E21B8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF8B2D2C179B2C005E21B8 /* Player.swift */; };
+		3CBF8B322C179B3A005E21B8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF8B302C179B3A005E21B8 /* LeaderboardViewController.swift */; };
+		3CBF8B332C179B3A005E21B8 /* LeaderbordPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF8B312C179B3A005E21B8 /* LeaderbordPlayerCell.swift */; };
+		3CBF8B362C179B4C005E21B8 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 3CBF8B352C179B4C005E21B8 /* RxGesture */; };
+		3CBF8B392C179B54005E21B8 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 3CBF8B382C179B54005E21B8 /* RxBlocking */; };
+		3CBF8B3B2C179B54005E21B8 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3CBF8B3A2C179B54005E21B8 /* RxBlocking-Dynamic */; };
+		3CBF8B3D2C179B54005E21B8 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3CBF8B3C2C179B54005E21B8 /* RxCocoa */; };
+		3CBF8B3F2C179B54005E21B8 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3CBF8B3E2C179B54005E21B8 /* RxCocoa-Dynamic */; };
+		3CBF8B412C179B54005E21B8 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 3CBF8B402C179B54005E21B8 /* RxRelay */; };
+		3CBF8B442C179B5C005E21B8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3CBF8B432C179B5C005E21B8 /* SnapKit */; };
+		3CBF8B462C179B5C005E21B8 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3CBF8B452C179B5C005E21B8 /* SnapKit-Dynamic */; };
+		3CBF8B482C179B8D005E21B8 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF8B472C179B8D005E21B8 /* NavBar.swift */; };
 		CB3989262C16450700E77097 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3989252C16450700E77097 /* Rubik-Bold.ttf */; };
 		CB3989292C16462900E77097 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3989272C16462900E77097 /* Rubik-Regular.ttf */; };
 		CB39892E2C1646C800E77097 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */; };
@@ -28,6 +43,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3CBF8B252C179B20005E21B8 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
+		3CBF8B262C179B20005E21B8 /* Uiview+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Uiview+Ext.swift"; sourceTree = "<group>"; };
+		3CBF8B2A2C179B27005E21B8 /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		3CBF8B2D2C179B2C005E21B8 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		3CBF8B302C179B3A005E21B8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		3CBF8B312C179B3A005E21B8 /* LeaderbordPlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderbordPlayerCell.swift; sourceTree = "<group>"; };
+		3CBF8B472C179B8D005E21B8 /* NavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		CB3989252C16450700E77097 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		CB3989272C16462900E77097 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
@@ -55,12 +77,54 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CBF8B412C179B54005E21B8 /* RxRelay in Frameworks */,
+				3CBF8B3B2C179B54005E21B8 /* RxBlocking-Dynamic in Frameworks */,
+				3CBF8B3F2C179B54005E21B8 /* RxCocoa-Dynamic in Frameworks */,
+				3CBF8B462C179B5C005E21B8 /* SnapKit-Dynamic in Frameworks */,
+				3CBF8B442C179B5C005E21B8 /* SnapKit in Frameworks */,
+				3CBF8B362C179B4C005E21B8 /* RxGesture in Frameworks */,
+				3CBF8B3D2C179B54005E21B8 /* RxCocoa in Frameworks */,
+				3CBF8B392C179B54005E21B8 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3CBF8B242C179B20005E21B8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3CBF8B252C179B20005E21B8 /* UIStackView+Ext.swift */,
+				3CBF8B262C179B20005E21B8 /* Uiview+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3CBF8B292C179B27005E21B8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3CBF8B2A2C179B27005E21B8 /* StorageService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3CBF8B2C2C179B2C005E21B8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3CBF8B2D2C179B2C005E21B8 /* Player.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3CBF8B2F2C179B3A005E21B8 /* LeaderboardScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3CBF8B302C179B3A005E21B8 /* LeaderboardViewController.swift */,
+				3CBF8B312C179B3A005E21B8 /* LeaderbordPlayerCell.swift */,
+			);
+			path = LeaderboardScreen;
+			sourceTree = "<group>";
+		};
 		CB39891E2C16410F00E77097 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,11 +155,14 @@
 		CBE0C0B82C15D5E000919D1E /* Epic_RPC */ = {
 			isa = PBXGroup;
 			children = (
+				3CBF8B2C2C179B2C005E21B8 /* Models */,
 				CBE0C0E22C15D6A900919D1E /* App */,
 				CBE0C0E32C15D6B100919D1E /* View */,
 				CBE0C0E12C15D69800919D1E /* ViewController */,
 				CB39891E2C16410F00E77097 /* Font */,
 				CBE0C0E42C15D6D500919D1E /* Resources */,
+				3CBF8B292C179B27005E21B8 /* Services */,
+				3CBF8B242C179B20005E21B8 /* Extensions */,
 			);
 			path = Epic_RPC;
 			sourceTree = "<group>";
@@ -108,6 +175,7 @@
 				CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */,
 				CBE0C0D82C15D68300919D1E /* RulesViewController.swift */,
 				CBE0C0D72C15D68300919D1E /* StartViewController.swift */,
+				3CBF8B2F2C179B3A005E21B8 /* LeaderboardScreen */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -124,6 +192,7 @@
 		CBE0C0E32C15D6B100919D1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3CBF8B472C179B8D005E21B8 /* NavBar.swift */,
 				CBE0C0CD2C15D67100919D1E /* FightLoadView.swift */,
 				CBE0C0D02C15D67100919D1E /* GameView.swift */,
 				CBE0C0CE2C15D67100919D1E /* ResultView.swift */,
@@ -159,6 +228,16 @@
 			dependencies = (
 			);
 			name = Epic_RPC;
+			packageProductDependencies = (
+				3CBF8B352C179B4C005E21B8 /* RxGesture */,
+				3CBF8B382C179B54005E21B8 /* RxBlocking */,
+				3CBF8B3A2C179B54005E21B8 /* RxBlocking-Dynamic */,
+				3CBF8B3C2C179B54005E21B8 /* RxCocoa */,
+				3CBF8B3E2C179B54005E21B8 /* RxCocoa-Dynamic */,
+				3CBF8B402C179B54005E21B8 /* RxRelay */,
+				3CBF8B432C179B5C005E21B8 /* SnapKit */,
+				3CBF8B452C179B5C005E21B8 /* SnapKit-Dynamic */,
+			);
 			productName = Epic_RPC;
 			productReference = CBE0C0B62C15D5E000919D1E /* Epic_RPC.app */;
 			productType = "com.apple.product-type.application";
@@ -187,6 +266,11 @@
 				Base,
 			);
 			mainGroup = CBE0C0AD2C15D5E000919D1E;
+			packageReferences = (
+				3CBF8B342C179B4C005E21B8 /* XCRemoteSwiftPackageReference "RxGesture" */,
+				3CBF8B372C179B54005E21B8 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				3CBF8B422C179B5C005E21B8 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = CBE0C0B72C15D5E000919D1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -220,14 +304,21 @@
 				CBE0C0E02C15D68300919D1E /* FightLoadViewController.swift in Sources */,
 				CBE0C0DD2C15D68300919D1E /* RulesViewController.swift in Sources */,
 				CBE0C0D62C15D67100919D1E /* RulesView.swift in Sources */,
+				3CBF8B322C179B3A005E21B8 /* LeaderboardViewController.swift in Sources */,
+				3CBF8B482C179B8D005E21B8 /* NavBar.swift in Sources */,
 				CBE0C0BA2C15D5E000919D1E /* AppDelegate.swift in Sources */,
+				3CBF8B2B2C179B27005E21B8 /* StorageService.swift in Sources */,
 				CBE0C0D32C15D67100919D1E /* ResultView.swift in Sources */,
 				CBE0C0D42C15D67100919D1E /* StartView.swift in Sources */,
+				3CBF8B272C179B20005E21B8 /* UIStackView+Ext.swift in Sources */,
 				CBE0C0DC2C15D68300919D1E /* StartViewController.swift in Sources */,
 				CBE0C0BC2C15D5E000919D1E /* SceneDelegate.swift in Sources */,
 				CBE0C0D22C15D67100919D1E /* FightLoadView.swift in Sources */,
 				CBE0C0DE2C15D68300919D1E /* GameViewController.swift in Sources */,
+				3CBF8B282C179B20005E21B8 /* Uiview+Ext.swift in Sources */,
+				3CBF8B332C179B3A005E21B8 /* LeaderbordPlayerCell.swift in Sources */,
 				CBE0C0D52C15D67100919D1E /* GameView.swift in Sources */,
+				3CBF8B2E2C179B2C005E21B8 /* Player.swift in Sources */,
 				CBE0C0DF2C15D68300919D1E /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +532,76 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3CBF8B342C179B4C005E21B8 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.4;
+			};
+		};
+		3CBF8B372C179B54005E21B8 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		3CBF8B422C179B5C005E21B8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3CBF8B352C179B4C005E21B8 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CBF8B342C179B4C005E21B8 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
+		};
+		3CBF8B382C179B54005E21B8 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CBF8B372C179B54005E21B8 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		3CBF8B3A2C179B54005E21B8 /* RxBlocking-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CBF8B372C179B54005E21B8 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxBlocking-Dynamic";
+		};
+		3CBF8B3C2C179B54005E21B8 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CBF8B372C179B54005E21B8 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		3CBF8B3E2C179B54005E21B8 /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CBF8B372C179B54005E21B8 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		3CBF8B402C179B54005E21B8 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CBF8B372C179B54005E21B8 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		3CBF8B432C179B5C005E21B8 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CBF8B422C179B5C005E21B8 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3CBF8B452C179B5C005E21B8 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CBF8B422C179B5C005E21B8 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CBE0C0AE2C15D5E000919D1E /* Project object */;
 }
