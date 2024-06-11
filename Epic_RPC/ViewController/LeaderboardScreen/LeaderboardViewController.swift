@@ -102,7 +102,8 @@ class LeaderboardViewController: UIViewController {
     private func setupBindings() {
         navBar.onLeftButtonTap
             .bind(onNext: { [weak self] in
-                self?.dismiss(animated: true)
+                self?.navigationController?.popViewController(animated: true)
+                self?.navigationController?.navigationBar.isHidden = false
             })
             .disposed(by: disposeBag)
     }

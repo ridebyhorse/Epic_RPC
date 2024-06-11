@@ -28,12 +28,14 @@ final class StartViewController: UIViewController {
         }
         
         let tapStart = UIAction { [unowned self] _ in
-            let fightLoadVC = FightLoadViewController()
-            navigationController?.pushViewController(fightLoadVC, animated: true)
+//            let fightLoadVC = FightLoadViewController()
+//            navigationController?.pushViewController(fightLoadVC, animated: true)
+            let gameVC = GameViewController()
+            navigationController?.pushViewController(gameVC, animated: true)
         }
         
         let tapResults = UIAction { [unowned self] _ in
-            let resultsVC = ResultViewController()
+            let resultsVC = LeaderboardViewController()
             navigationController?.pushViewController(resultsVC, animated: true)
         }
         

@@ -22,13 +22,14 @@ class ResultViewController: UIViewController {
     private func addActions() {
         
         let homeButtonPressed = UIAction { [unowned self] _ in
-            let startVC = StartViewController()
-            navigationController?.pushViewController(startVC, animated: true)
+            navigationController?.popToRootViewController(animated: true)
         }
         
         let repeatButtonPressed = UIAction { [unowned self] _ in
-            let fightLoadVC = FightLoadViewController()
-            navigationController?.pushViewController(fightLoadVC, animated: true)
+//            let fightLoadVC = FightLoadViewController()
+//            navigationController?.pushViewController(fightLoadVC, animated: true)
+            let gameVC = GameViewController()
+            navigationController?.pushViewController(gameVC, animated: true)
         }
         
         resultView.homeButton.addAction(homeButtonPressed, for: .touchUpInside)
