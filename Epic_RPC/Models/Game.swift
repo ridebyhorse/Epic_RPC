@@ -15,8 +15,14 @@ enum GameGesture {
 
 struct Game {
     
+    private (set) static var currentSettings: Settings = Settings(firstPlayer: Player(image: "avatar_user", name: "Player 1", score: 0, rate: 0), secondPlayer: nil, roundTime: .s30, music: nil)
+    
     func calculateWin(user: GameGesture, pc: GameGesture) -> Bool? {
         check(user, pc)
+    }
+    
+    func setupGameSettings(settings: Settings) {
+        Game.currentSettings = settings
     }
     
     private func check(_ g1: GameGesture, _ g2: GameGesture) -> Bool? {
