@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum RoundTime: Int {
+enum RoundTime: Int, Codable {
     case s30 = 30
     case s60 = 60
 }
 
-struct Settings {
+struct Settings: Codable {
     let firstPlayer: Player
     let secondPlayer: Player?
     let roundTime: RoundTime
