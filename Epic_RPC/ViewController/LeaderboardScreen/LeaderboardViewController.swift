@@ -13,6 +13,8 @@ import RxGesture
 
 class LeaderboardViewController: UIViewController {
     
+    private let tapGestureRecognizer = UITapGestureRecognizer()
+    
     private let navBar = NavBar()
         .title("Leaderboard")
         .leftButton(.back)
@@ -36,6 +38,7 @@ class LeaderboardViewController: UIViewController {
     private let playerNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Player 1"
+        label.isUserInteractionEnabled = true
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .gray
         return label
@@ -93,6 +96,7 @@ class LeaderboardViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupBindings()
+        setupTapGestureRecognizer()
     }
     
     deinit {
@@ -244,5 +248,26 @@ private extension LeaderboardViewController {
                 .equalToSuperview()
                 .inset(20)
         }
+    }
+}
+
+// MARK: - Tap Gesture Recognizer
+
+extension LeaderboardViewController {
+    
+    func setupTapGestureRecognizer() {
+        tapGestureRecognizer.addTarget(self, action: #selector(tap))
+        playerNameLabel.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func tap(sender: UITapGestureRecognizer) {
+        let userNameVC = ChangeUsernameViewController()
+        userNameVC.modalPresentationStyle = .overFullScreen
+        userNameVC.modalTransitionStyle = .crossDissolve
+        userNameVC.getUsername = { [weak self] userName in
+            guard let self = self else { return }
+            self.playerNameLabel.text = userName
+        }
+        present(userNameVC, animated: true)
     }
 }
