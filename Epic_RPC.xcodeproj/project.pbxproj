@@ -22,6 +22,8 @@
 		3CBF8B442C179B5C005E21B8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3CBF8B432C179B5C005E21B8 /* SnapKit */; };
 		3CBF8B462C179B5C005E21B8 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3CBF8B452C179B5C005E21B8 /* SnapKit-Dynamic */; };
 		3CBF8B482C179B8D005E21B8 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF8B472C179B8D005E21B8 /* NavBar.swift */; };
+		4DC4C5152C1AD8A0000A4FEF /* ChangeUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4C5142C1AD8A0000A4FEF /* ChangeUsernameView.swift */; };
+		4DC4C5172C1AE3E0000A4FEF /* ChangeUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4C5162C1AE3E0000A4FEF /* ChangeUsernameViewController.swift */; };
 		CB3989262C16450700E77097 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3989252C16450700E77097 /* Rubik-Bold.ttf */; };
 		CB3989292C16462900E77097 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3989272C16462900E77097 /* Rubik-Regular.ttf */; };
 		CB39892E2C1646C800E77097 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */; };
@@ -51,6 +53,8 @@
 		3CBF8B302C179B3A005E21B8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		3CBF8B312C179B3A005E21B8 /* LeaderbordPlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderbordPlayerCell.swift; sourceTree = "<group>"; };
 		3CBF8B472C179B8D005E21B8 /* NavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
+		4DC4C5142C1AD8A0000A4FEF /* ChangeUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameView.swift; sourceTree = "<group>"; };
+		4DC4C5162C1AE3E0000A4FEF /* ChangeUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameViewController.swift; sourceTree = "<group>"; };
 		CB3989252C16450700E77097 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		CB3989272C16462900E77097 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 		CBE0C0E12C15D69800919D1E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4DC4C5162C1AE3E0000A4FEF /* ChangeUsernameViewController.swift */,
 				CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */,
 				CBE0C0D92C15D68300919D1E /* GameViewController.swift */,
 				CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */,
@@ -196,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				3CBF8B472C179B8D005E21B8 /* NavBar.swift */,
+				4DC4C5142C1AD8A0000A4FEF /* ChangeUsernameView.swift */,
 				CBE0C0CD2C15D67100919D1E /* FightLoadView.swift */,
 				CBE0C0D02C15D67100919D1E /* GameView.swift */,
 				CBE0C0CE2C15D67100919D1E /* ResultView.swift */,
@@ -312,6 +318,7 @@
 				CBE0C0BA2C15D5E000919D1E /* AppDelegate.swift in Sources */,
 				3CBF8B2B2C179B27005E21B8 /* StorageService.swift in Sources */,
 				CBE0C0D32C15D67100919D1E /* ResultView.swift in Sources */,
+				4DC4C5172C1AE3E0000A4FEF /* ChangeUsernameViewController.swift in Sources */,
 				CBE0C0D42C15D67100919D1E /* StartView.swift in Sources */,
 				3CBF8B272C179B20005E21B8 /* UIStackView+Ext.swift in Sources */,
 				CBE0C0DC2C15D68300919D1E /* StartViewController.swift in Sources */,
@@ -319,6 +326,7 @@
 				CBE0C0D22C15D67100919D1E /* FightLoadView.swift in Sources */,
 				CBE0C0DE2C15D68300919D1E /* GameViewController.swift in Sources */,
 				3CBF8B282C179B20005E21B8 /* Uiview+Ext.swift in Sources */,
+				4DC4C5152C1AD8A0000A4FEF /* ChangeUsernameView.swift in Sources */,
 				CBCC59A92C18457400F194B5 /* Game.swift in Sources */,
 				3CBF8B332C179B3A005E21B8 /* LeaderbordPlayerCell.swift in Sources */,
 				CBE0C0D52C15D67100919D1E /* GameView.swift in Sources */,
