@@ -12,7 +12,6 @@ class GameViewController: UIViewController {
     
     private enum TimerAction {
         case start
-        case pause
         case `continue`
         case stop
     }
@@ -26,20 +25,16 @@ class GameViewController: UIViewController {
     private let secondsTotal: Float = 30.0
     private var secondsCount = 30
     private var userScore = 0 {
-            didSet {
-                if userScore == 3 {
-                    goToResults(true)
-                } else {
-                    restartRound()
-                }
+        didSet {
+            if userScore == 3 {
+                goToResults(true)
             }
+        }
     }
     private var pcScore = 0 {
         didSet {
             if pcScore == 3 {
                 goToResults(false)
-            } else {
-                restartRound()
             }
         }
     }
@@ -49,7 +44,6 @@ class GameViewController: UIViewController {
         setupView()
         setupPlayers()
         setTimer(action: .start)
-        
     }
     
     private func setupView() {
@@ -61,6 +55,7 @@ class GameViewController: UIViewController {
                 return .femaleHandRock
             }
         }
+        gameView.stopTimer = { [weak self] in self?.setTimer(action: .stop) }
         gameView.setupPlayerAvatar(avatar: Game.currentSettings.firstPlayer.image)
         gameView.setupSecondPlayerAvatar(avatar: Game.currentSettings.secondPlayer?.image)
         view = gameView
@@ -72,8 +67,6 @@ class GameViewController: UIViewController {
             secondsCount = Int(secondsTotal)
             timer.invalidate()
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
-        case .pause:
-            timer.invalidate()
         case .continue:
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
         case .stop:
@@ -87,21 +80,22 @@ class GameViewController: UIViewController {
     }
     
     private func calculateWin(_ userImage: UIImage, _ pcImage: UIImage) -> Bool? {
-        setTimer(action: .pause)
+        
         let result = game.calculateWin(user: getGestureForImage(userImage), pc: getGestureForImage(pcImage))
+
         if result == true {
             userScore += 1
         } else if result == false {
             pcScore += 1
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            self?.soundPlayer.play()
-        }
+        } 
+        restartRound()
+        soundPlayer.play()
+        
         return result
     }
     
     private func restartRound() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [weak self] in
             self?.setTimer(action: .start)
             self?.gameView.restartRound()
         }

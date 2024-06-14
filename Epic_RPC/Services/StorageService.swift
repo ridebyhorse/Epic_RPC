@@ -10,6 +10,7 @@ import Foundation
 class StorageService {
     private let userDefaults = UserDefaults.standard
     private let playersKey = "players"
+    private let settingsKey = "settings"
 
     static let shared = StorageService()
 
@@ -42,25 +43,80 @@ class StorageService {
 
     func addPlayer(_ player: Player) {
         var currentPlayers = getPlayers()
-        currentPlayers.append(player)
-        savePlayers(currentPlayers)
+        if !currentPlayers.contains(where: { $0.name == player.name }) {
+            currentPlayers.append(player)
+            savePlayers(currentPlayers)
+       }
     }
     
     ///обновляет количество побед или поражений (и score) по userName
     func updateUserStatistics(username: String, win: Bool) {
-        
+        var currentPlayers = getPlayers()
+        if let index = currentPlayers.firstIndex(where: { $0.name == username }) {
+            var user = currentPlayers[index]
+            if win {
+                user.victories += 1
+                user.score += 500
+            } else {
+                user.loses += 1
+            }
+            currentPlayers.remove(at: index)
+            currentPlayers.insert(user, at: index)
+        }
+    }
+    
+    ///обновляет аватар по userName
+    func updateUserAvatar(username: String, avatar: String) {
+        var currentPlayers = getPlayers()
+        if let index = currentPlayers.firstIndex(where: { $0.name == username }) {
+            var user = currentPlayers[index]
+            user.image = avatar
+            currentPlayers.remove(at: index)
+            currentPlayers.insert(user, at: index)
+        }
     }
     
     ///сохраняет текущие настройки
-    func saveSettings() {
-        
-    } 
-    
-    ///устанавливает настройки последней игры
-    func setupLastSettings() {
-        
+    func saveSettings(_ settings: Settings) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(settings)
+            userDefaults.set(data, forKey: settingsKey)
+        } catch {
+            print("Error encoding settings: \(error)")
+        }
     }
-
+    
+    ///возвращает настройки последней игры
+    func getLastSettings() -> Settings? {
+        if let data = userDefaults.data(forKey: settingsKey) {
+            do {
+                let decoder = JSONDecoder()
+                var settings = try decoder.decode(Settings.self, from: data)
+                if let player1 = getPlayer(username: settings.firstPlayer.name) {
+                    settings.firstPlayer = player1
+                }
+                if let player2 = settings.secondPlayer {
+                    if let user = getPlayer(username: player2.name) {
+                        settings.secondPlayer = user
+                    }
+                }
+                return settings
+            } catch {
+                print("Error decoding players: \(error)")
+            }
+        }
+        return nil
+    }
+    
+    private func getPlayer(username: String) -> Player? {
+        var currentPlayers = getPlayers()
+        if let index = currentPlayers.firstIndex(where: { $0.name == username }) {
+            return currentPlayers[index]
+        }
+        return nil
+    }
+            
     private func savePlayers(_ players: [Player]) {
         do {
             let encoder = JSONEncoder()
@@ -70,4 +126,5 @@ class StorageService {
             print("Error encoding players: \(error)")
         }
     }
+
 }

@@ -16,6 +16,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
+        if let settings = StorageService.shared.getLastSettings() {
+            Game().setupGameSettings(settings: settings)
+        }
         let navigationVC = UINavigationController(rootViewController: StartViewController())
         window?.rootViewController = navigationVC
         window?.makeKeyAndVisible()

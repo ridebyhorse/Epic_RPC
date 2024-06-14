@@ -23,6 +23,7 @@ struct Game {
     
     func setupGameSettings(settings: Settings) {
         Game.currentSettings = settings
+        StorageService.shared.saveSettings(settings)
     }
     
     private func check(_ g1: GameGesture, _ g2: GameGesture) -> Bool? {

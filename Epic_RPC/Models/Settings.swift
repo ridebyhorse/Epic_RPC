@@ -13,8 +13,8 @@ enum RoundTime: Int, Codable {
 }
 
 struct Settings: Codable {
-    let firstPlayer: Player
-    let secondPlayer: Player?
+    var firstPlayer: Player
+    var secondPlayer: Player?
     let roundTime: RoundTime
     let music: String?
 }

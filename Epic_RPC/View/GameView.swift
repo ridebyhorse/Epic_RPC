@@ -15,6 +15,8 @@ class GameView: UIView {
     ///Возвращает рандомный жест в игре для pc
     var getRandomGesture: (() -> UIImage)?
     
+    var stopTimer: (() -> Void)?
+    
     private let background = UIImageView()
     private let mainLabel = UILabel()
     private let userHand = UIImageView()
@@ -221,10 +223,15 @@ class GameView: UIView {
     }
     
     @objc private func madeChoice(_ sender: UIButton) {
+        stopTimer?()
         sender.layer.cornerRadius = sender.bounds.width / 2
         sender.layer.borderWidth = 4
         sender.layer.borderColor = UIColor.yellowGame.cgColor
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            sender.layer.cornerRadius = 0
+            sender.layer.borderWidth = 0
+            sender.layer.borderColor = nil
             switch sender.tag {
             case 0:
                 self?.userHand.image = .maleHandRock
@@ -234,13 +241,9 @@ class GameView: UIView {
                 self?.userHand.image = .maleHandScissors
             }
             self?.pcHand.image = self?.getRandomGesture?()
-            sender.layer.cornerRadius = 0
-            sender.layer.borderWidth = 0
-            sender.layer.borderColor = nil
             guard let userImage = self?.userHand.image else { return }
             guard let pcImage = self?.pcHand.image else { return }
             self?.applyRoundResult(self?.onChoiceMade?(userImage, pcImage))
-            self?.restartRound()
         }
     }
 
