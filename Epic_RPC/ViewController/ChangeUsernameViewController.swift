@@ -23,8 +23,10 @@ class ChangeUsernameViewController: UIViewController {
         
         let okButtonPressed = UIAction { [unowned self] _ in
             guard let text = changeUsernameView.textField.text else { return }
-            getUsername?(text)
-            dismiss(animated: true)
+            if text != "" {
+                getUsername?(text)
+                dismiss(animated: true)
+            }
         }
         changeUsernameView.okButton.addAction(okButtonPressed, for: .touchUpInside)
     }
