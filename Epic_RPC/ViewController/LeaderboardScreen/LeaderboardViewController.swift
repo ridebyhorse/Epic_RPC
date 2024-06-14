@@ -13,7 +13,8 @@ import RxGesture
 
 class LeaderboardViewController: UIViewController {
     
-    private let tapGestureRecognizer = UITapGestureRecognizer()
+    private let imageViewTapGestureRecognizer = UITapGestureRecognizer()
+    private let labelGestureRecognizer = UITapGestureRecognizer()
     
     private let navBar = NavBar()
         .title("Leaderboard")
@@ -21,6 +22,7 @@ class LeaderboardViewController: UIViewController {
     
     private let playerImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true
         imageView.image = .character1
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -256,8 +258,11 @@ private extension LeaderboardViewController {
 extension LeaderboardViewController {
     
     func setupTapGestureRecognizer() {
-        tapGestureRecognizer.addTarget(self, action: #selector(tap))
-        playerNameLabel.addGestureRecognizer(tapGestureRecognizer)
+        labelGestureRecognizer.addTarget(self, action: #selector(tap))
+        imageViewTapGestureRecognizer.addTarget(self, action: #selector(tapped))
+        
+        playerNameLabel.addGestureRecognizer(labelGestureRecognizer)
+        playerImage.addGestureRecognizer(imageViewTapGestureRecognizer)
     }
     
     @objc func tap(sender: UITapGestureRecognizer) {
@@ -269,5 +274,17 @@ extension LeaderboardViewController {
             self.playerNameLabel.text = userName
         }
         present(userNameVC, animated: true)
+    }
+    
+    @objc func tapped(sender: UITapGestureRecognizer) {
+        let userAvatarVC = ChooseAvatarViewController()
+        userAvatarVC.modalPresentationStyle = .overFullScreen
+        userAvatarVC.modalTransitionStyle = .crossDissolve
+        userAvatarVC.getAvatar = { [weak self] image in
+            guard let self = self else { return }
+            self.playerImage.image = image
+            
+        }
+        present(userAvatarVC, animated: true)
     }
 }
