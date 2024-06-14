@@ -32,6 +32,8 @@
 		CB39892E2C1646C800E77097 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */; };
 		CB3989342C164C2100E77097 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3989332C164C2100E77097 /* CustomFont.swift */; };
 		CBB2C8092C1B21FF003FE319 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C8082C1B21FF003FE319 /* Settings.swift */; };
+		CBBFE01A2C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBBFE0192C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav */; };
+		CBBFE01C2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CBBFE01B2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 */; };
 		CBCC59A92C18457400F194B5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC59A82C18457400F194B5 /* Game.swift */; };
 		CBE0C0BA2C15D5E000919D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */; };
 		CBE0C0BC2C15D5E000919D1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0BB2C15D5E000919D1E /* SceneDelegate.swift */; };
@@ -67,6 +69,8 @@
 		CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		CB3989332C164C2100E77097 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		CBB2C8082C1B21FF003FE319 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		CBBFE0192C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "573376__johnloser__cyber-punch-01.wav"; sourceTree = "<group>"; };
+		CBBFE01B2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "449640__cnupoc__main-theme.mp3"; sourceTree = "<group>"; };
 		CBCC59A82C18457400F194B5 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		CBE0C0B62C15D5E000919D1E /* Epic_RPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epic_RPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +156,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		CBBFE0182C1B742B00746F77 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				CBBFE0192C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav */,
+				CBBFE01B2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		CBE0C0AD2C15D5E000919D1E = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +188,7 @@
 				CBE0C0E22C15D6A900919D1E /* App */,
 				CBE0C0E32C15D6B100919D1E /* View */,
 				CBE0C0E12C15D69800919D1E /* ViewController */,
+				CBBFE0182C1B742B00746F77 /* Sounds */,
 				CB39891E2C16410F00E77097 /* Font */,
 				CBE0C0E42C15D6D500919D1E /* Resources */,
 				3CBF8B292C179B27005E21B8 /* Services */,
@@ -308,6 +322,8 @@
 			files = (
 				CBE0C0C62C15D5E100919D1E /* LaunchScreen.storyboard in Resources */,
 				CB3989292C16462900E77097 /* Rubik-Regular.ttf in Resources */,
+				CBBFE01C2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 in Resources */,
+				CBBFE01A2C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav in Resources */,
 				CB3989262C16450700E77097 /* Rubik-Bold.ttf in Resources */,
 				CBE0C0C32C15D5E100919D1E /* Assets.xcassets in Resources */,
 				CB39892E2C1646C800E77097 /* Rubik-Medium.ttf in Resources */,
@@ -496,8 +512,8 @@
 				INFOPLIST_FILE = Epic_RPC/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,9 +521,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MariaNesterova.Epic-RPC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -523,8 +542,8 @@
 				INFOPLIST_FILE = Epic_RPC/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,9 +551,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MariaNesterova.Epic-RPC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

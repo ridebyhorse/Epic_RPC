@@ -5,7 +5,7 @@
 //  Created by Елена Логинова on 14.06.2024.
 //
 
-import Foundation
+import UIKit
 
 final class CharacterCell: UICollectionViewCell {
     

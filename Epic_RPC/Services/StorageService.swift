@@ -110,7 +110,7 @@ class StorageService {
     }
     
     private func getPlayer(username: String) -> Player? {
-        var currentPlayers = getPlayers()
+        let currentPlayers = getPlayers()
         if let index = currentPlayers.firstIndex(where: { $0.name == username }) {
             return currentPlayers[index]
         }
