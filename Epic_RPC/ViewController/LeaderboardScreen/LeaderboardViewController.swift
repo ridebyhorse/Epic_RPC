@@ -88,7 +88,7 @@ class LeaderboardViewController: UIViewController {
         return table
     }()
     
-    private let players: [Player] = StorageService.shared.getMockPlayers()
+    private let players: [Player] = StorageService.shared.getMockPlayers().sorted { $0.score > $1.score }
     
     private let disposeBag = DisposeBag()
     

@@ -8,8 +8,9 @@
 import Foundation
 
 struct Player: Codable {
-    let image: String?
-    let name: String
-    let score: Int
-    let rate: Int
+    var image: String?
+    var name: String
+    var score: Int = 0
+    var victories: Int = 0
+    var loses: Int = 0
 }

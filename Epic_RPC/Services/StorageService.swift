@@ -17,13 +17,13 @@ class StorageService {
 
     func getMockPlayers() -> [Player] {
         [
-            .init(image: "character2", name: "Name name", score: 231, rate: 34),
-            .init(image: "character1", name: "Test name", score: 231, rate: 34),
-            .init(image: "character4", name: "Person name", score: 231, rate: 34),
-            .init(image: "character1", name: "OOo name", score: 231, rate: 34),
-            .init(image: "character1", name: "Test name", score: 231, rate: 34),
-            .init(image: "character4", name: "Person name", score: 231, rate: 34),
-            .init(image: "character1", name: "OOo name", score: 231, rate: 34)
+            .init(image: "character2", name: "Name name", score: 231, victories: 32, loses: 4),
+            .init(image: "character1", name: "Test name", score: 231, victories: 32, loses: 4),
+            .init(image: "character4", name: "Person name", score: 231, victories: 32, loses: 4),
+            .init(image: "character1", name: "OOo name", score: 231, victories: 32, loses: 4),
+            .init(image: "character1", name: "Test name", score: 231, victories: 32, loses: 4),
+            .init(image: "character4", name: "Person name", score: 231, victories: 32, loses: 4),
+            .init(image: "character1", name: "OOo name", score: 231, victories: 32, loses: 4)
         ]
     }
 
@@ -44,6 +44,21 @@ class StorageService {
         var currentPlayers = getPlayers()
         currentPlayers.append(player)
         savePlayers(currentPlayers)
+    }
+    
+    ///обновляет количество побед или поражений (и score) по userName
+    func updateUserStatistics(username: String, win: Bool) {
+        
+    }
+    
+    ///сохраняет текущие настройки
+    func saveSettings() {
+        
+    } 
+    
+    ///устанавливает настройки последней игры
+    func setupLastSettings() {
+        
     }
 
     private func savePlayers(_ players: [Player]) {

@@ -8,9 +8,6 @@
 import UIKit
 
 class GameView: UIView {
-
-    ///Переход на экран Results по окончанию игры
-    var finishGame: ((Bool) -> Void)?
     
     ///После выбора жеста получаем результат раунда
     var onChoiceMade: ((UIImage, UIImage) -> Bool?)?
@@ -18,16 +15,6 @@ class GameView: UIView {
     ///Возвращает рандомный жест в игре для pc
     var getRandomGesture: (() -> UIImage)?
     
-    private enum TimerAction {
-        case start
-        case pause
-        case `continue`
-        case stop
-    }
-    
-    private let secondsTotal: Float = 30.0
-    private var secondsCount = 30
-    private var timer = Timer()
     private let background = UIImageView()
     private let mainLabel = UILabel()
     private let userHand = UIImageView()
@@ -46,7 +33,6 @@ class GameView: UIView {
     init() {
         super.init(frame: .zero)
         setupUI()
-        setTimer(action: .start)
     }
     
     required init?(coder: NSCoder) {
@@ -93,10 +79,8 @@ class GameView: UIView {
         countDownLabel.font = .custom(font: .medium, size: 12)
         countDownLabel.textColor = .white
         
-        userAvatar.image = .avatarUser
         userAvatar.contentMode = .scaleAspectFit
         
-        pcAvatar.image = .avatarPc
         pcAvatar.contentMode = .scaleAspectFit
         
         scoreProgressUser.trackTintColor = .deepBlueGame
@@ -181,24 +165,29 @@ class GameView: UIView {
         ])
     }
     
-    private func setTimer(action: TimerAction) {
-        switch action {
-        case .start:
-            secondsCount = Int(secondsTotal)
-            timerProgress.progress = 0
-            timer.invalidate()
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
-        case .pause:
-            timer.invalidate()
-        case .continue:
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
-        case .stop:
-            timer.invalidate()
-            countDownLabel.text = "0:00"
-            timerProgress.progress = 0
+    func setupPlayerAvatar(avatar: String?) {
+        guard let avatar else {
+            userAvatar.image = .avatarUser
+            return
         }
+        userAvatar.image = UIImage(named: avatar)
     }
-
+    
+    func setupSecondPlayerAvatar(avatar: String?) {
+        guard let avatar else {
+            pcAvatar.image = .avatarPc
+            return
+        }
+        pcAvatar.image = UIImage(named: avatar)
+    }
+    
+    func updateTimeLabel(text : String) {
+        countDownLabel.text = text
+    }
+    
+    func updateTimeProgress(on count: Float) {
+        timerProgress.progress += count
+    }
     
     private func applyRoundResult(_ result: Bool?) {
         switch result {
@@ -213,23 +202,14 @@ class GameView: UIView {
         }
     }
     
-    private func restartRound() {
-        if scoreProgressUser.progress > 0.9 || scoreProgressPc.progress > 0.9 {
-            if scoreProgressUser.progress > 0.9 {
-                finishGame?(true)
-            } else {
-                finishGame?(false)
-            }
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-                self?.userHand.image = .maleHand
-                self?.pcHand.image = .femaleHand
-                self?.setTimer(action: .start)
-                self?.setupMainLabel(text: "FIGHT")
-            }
-        }
+    func restartRound() {
+        countDownLabel.text = "0:00"
+        timerProgress.progress = 0
+        userHand.image = .maleHand
+        pcHand.image = .femaleHand
+        setupMainLabel(text: "FIGHT")
     }
-    
+  
     private func setupMainLabel(text: String) {
         mainLabel.alpha = 1
         mainLabel.text = text
@@ -241,20 +221,16 @@ class GameView: UIView {
     }
     
     @objc private func madeChoice(_ sender: UIButton) {
-        setTimer(action: .pause)
         sender.layer.cornerRadius = sender.bounds.width / 2
         sender.layer.borderWidth = 4
         sender.layer.borderColor = UIColor.yellowGame.cgColor
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             switch sender.tag {
             case 0:
-                print("chose rock")
                 self?.userHand.image = .maleHandRock
             case 1:
-                print("chose paper")
                 self?.userHand.image = .maleHandPaper
             default:
-                print("chose scissors")
                 self?.userHand.image = .maleHandScissors
             }
             self?.pcHand.image = self?.getRandomGesture?()
@@ -267,22 +243,5 @@ class GameView: UIView {
             self?.restartRound()
         }
     }
-    
-    @objc private func updateCountDown(_ sender: Timer) {
-        if secondsTotal != Float(secondsCount) {
-            timerProgress.progress += 1.0 / secondsTotal
-        }
-        if secondsCount > 0 {
-            let minutesCount = String(secondsCount / 60)
-            if secondsCount < 10 {
-                countDownLabel.text = minutesCount + ":0" + String(secondsCount)
-            } else {
-                countDownLabel.text = minutesCount + ":" + String(secondsCount)
-            }
-            secondsCount -= 1
-        } else {
-            setTimer(action: .stop)
-            finishGame?(false)
-        }
-    }
+
 }
