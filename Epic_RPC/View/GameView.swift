@@ -215,8 +215,13 @@ class GameView: UIView {
         }
     }
     
-    func restartRound() {
-        countDownLabel.text = "0:00"
+    func restartRound(seconds: RoundTime) {
+        switch seconds {
+        case .s30:
+            countDownLabel.text = "0:30"
+        case .s60:
+            countDownLabel.text = "1:00"
+        }
         timerProgress.progress = 0
         userHand.image = .maleHand
         pcHand.image = .femaleHand

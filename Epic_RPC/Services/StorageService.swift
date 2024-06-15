@@ -113,6 +113,16 @@ class StorageService {
         return nil
     }
     
+    ///возвращает игрока - дефолтного противника
+    func getPcPlayer() -> Player {
+        var currentPlayers = getPlayers()
+        if let index = currentPlayers.firstIndex(where: { $0.name == "PC" }) {
+            return currentPlayers[index]
+        } else {
+            return Player(image: "avatar_pc", name: "PC")
+        }
+    }
+    
     private func getPlayer(username: String) -> Player? {
         let currentPlayers = getPlayers()
         if let index = currentPlayers.firstIndex(where: { $0.name == username }) {

@@ -35,8 +35,7 @@ class ResultViewController: UIViewController {
         }
         
         let repeatButtonPressed = UIAction { [unowned self] _ in
-            let gameVC = GameViewController()
-            navigationController?.pushViewController(gameVC, animated: true)
+            navigationController?.pushViewController(FightLoadViewController(), animated: true)
         }
         
         resultView.homeButton.addAction(homeButtonPressed, for: .touchUpInside)
