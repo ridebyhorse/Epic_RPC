@@ -114,7 +114,7 @@ class GameViewController: UIViewController {
     private func restartRound() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [weak self] in
             self?.setTimer(action: .start)
-            self?.gameView.restartRound()
+            self?.gameView.restartRound(seconds: .s30)
         }
     }
     
@@ -176,6 +176,10 @@ class GameViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         setTimer(action: .continue)
         musicPlayer.play()
+    }
+    
+    private func setupSettings() {
+//        Game.currentSettings
     }
     
     @objc private func updateCountDown(_ sender: Timer) {

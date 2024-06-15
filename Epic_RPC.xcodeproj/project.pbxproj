@@ -51,6 +51,8 @@
 		CBE0C0E02C15D68300919D1E /* FightLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */; };
 		CBF7DE442C1D98DC00D4D475 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7DE432C1D98DC00D4D475 /* PauseView.swift */; };
 		CBF7DE462C1D9D6400D4D475 /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7DE452C1D9D6400D4D475 /* PauseViewController.swift */; };
+		CBF7DE482C1DAB2D00D4D475 /* 512379__mrthenoronha__bass-line-theme-loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBF7DE472C1DAB2D00D4D475 /* 512379__mrthenoronha__bass-line-theme-loop.wav */; };
+		CBF7DE4A2C1DAB3300D4D475 /* 320553__griffon_designs__dirty-grind.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CBF7DE492C1DAB3300D4D475 /* 320553__griffon_designs__dirty-grind.aiff */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,8 @@
 		CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FightLoadViewController.swift; sourceTree = "<group>"; };
 		CBF7DE432C1D98DC00D4D475 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		CBF7DE452C1D9D6400D4D475 /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
+		CBF7DE472C1DAB2D00D4D475 /* 512379__mrthenoronha__bass-line-theme-loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "512379__mrthenoronha__bass-line-theme-loop.wav"; sourceTree = "<group>"; };
+		CBF7DE492C1DAB3300D4D475 /* 320553__griffon_designs__dirty-grind.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "320553__griffon_designs__dirty-grind.aiff"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 		CBBFE0182C1B742B00746F77 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				CBF7DE492C1DAB3300D4D475 /* 320553__griffon_designs__dirty-grind.aiff */,
+				CBF7DE472C1DAB2D00D4D475 /* 512379__mrthenoronha__bass-line-theme-loop.wav */,
 				CBBFE0192C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav */,
 				CBBFE01B2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 */,
 			);
@@ -327,8 +333,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBE0C0C62C15D5E100919D1E /* LaunchScreen.storyboard in Resources */,
+				CBF7DE4A2C1DAB3300D4D475 /* 320553__griffon_designs__dirty-grind.aiff in Resources */,
 				CB3989292C16462900E77097 /* Rubik-Regular.ttf in Resources */,
 				CBBFE01C2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 in Resources */,
+				CBF7DE482C1DAB2D00D4D475 /* 512379__mrthenoronha__bass-line-theme-loop.wav in Resources */,
 				CBBFE01A2C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav in Resources */,
 				CB3989262C16450700E77097 /* Rubik-Bold.ttf in Resources */,
 				CBE0C0C32C15D5E100919D1E /* Assets.xcassets in Resources */,
