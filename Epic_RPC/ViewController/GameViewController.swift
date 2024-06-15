@@ -7,6 +7,9 @@
 
 import UIKit
 import AVFAudio
+import RxSwift
+import RxCocoa
+import RxGesture
 
 class GameViewController: UIViewController {
     
@@ -21,7 +24,11 @@ class GameViewController: UIViewController {
     private var timer = Timer()
     private var musicPlayer = AVAudioPlayer()
     private var soundPlayer = AVAudioPlayer()
-    
+    private let navBar = NavBar()
+        .title("Game")
+        .leftButton(.back)
+        .rightButton(.buttonGamePause)
+    private let disposeBag = DisposeBag()
     private let secondsTotal: Float = 30.0
     private var secondsCount = 30
     private var userScore = 0 {
@@ -44,6 +51,8 @@ class GameViewController: UIViewController {
         setupView()
         setupPlayers()
         setTimer(action: .start)
+        setupBindings()
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setupView() {
@@ -59,6 +68,13 @@ class GameViewController: UIViewController {
         gameView.setupPlayerAvatar(avatar: Game.currentSettings.firstPlayer.image)
         gameView.setupSecondPlayerAvatar(avatar: Game.currentSettings.secondPlayer?.image)
         view = gameView
+        view.addSubviews(navBar)
+        view.subviews.forEach({$0.translatesAutoresizingMaskIntoConstraints = false})
+        
+        NSLayoutConstraint.activate([
+            navBar.widthAnchor.constraint(equalTo: view.widthAnchor),
+            navBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        ])
     }
     
     private func setTimer(action: TimerAction) {
@@ -129,6 +145,37 @@ class GameViewController: UIViewController {
         
         let urlSound = Bundle.main.url(forResource: "573376__johnloser__cyber-punch-01", withExtension: "wav")
         soundPlayer = try! AVAudioPlayer(contentsOf: urlSound!)
+    }
+    
+    private func setupBindings() {
+        navBar.onLeftButtonTap
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+                self?.navigationController?.navigationBar.isHidden = false
+            })
+            .disposed(by: disposeBag)
+        navBar.onRightButtonTap
+            .bind(onNext: { [weak self] in
+                self?.putOnPause()
+                self?.present(PauseViewController(onHomeTap: {self?.gotoStartVC()}, onPlayTap: {self?.continueGame()}), animated: true)
+                self?.navigationController?.navigationBar.isHidden = false
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func gotoStartVC() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    private func putOnPause() {
+        setTimer(action: .stop)
+        musicPlayer.stop()
+    }
+    
+    private func continueGame() {
+        navigationController?.navigationBar.isHidden = true
+        setTimer(action: .continue)
+        musicPlayer.play()
     }
     
     @objc private func updateCountDown(_ sender: Timer) {

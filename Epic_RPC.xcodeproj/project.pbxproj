@@ -49,6 +49,8 @@
 		CBE0C0DE2C15D68300919D1E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0D92C15D68300919D1E /* GameViewController.swift */; };
 		CBE0C0DF2C15D68300919D1E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */; };
 		CBE0C0E02C15D68300919D1E /* FightLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */; };
+		CBF7DE442C1D98DC00D4D475 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7DE432C1D98DC00D4D475 /* PauseView.swift */; };
+		CBF7DE462C1D9D6400D4D475 /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7DE452C1D9D6400D4D475 /* PauseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		CBE0C0D92C15D68300919D1E /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FightLoadViewController.swift; sourceTree = "<group>"; };
+		CBF7DE432C1D98DC00D4D475 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
+		CBF7DE452C1D9D6400D4D475 /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				4DC4C5162C1AE3E0000A4FEF /* ChangeUsernameViewController.swift */,
+				CBF7DE452C1D9D6400D4D475 /* PauseViewController.swift */,
 				4D1C13CC2C1C95D800A883C6 /* ChooseAvatarViewController.swift */,
 				CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */,
 				CBE0C0D92C15D68300919D1E /* GameViewController.swift */,
@@ -230,6 +235,7 @@
 				4DC4C5142C1AD8A0000A4FEF /* ChangeUsernameView.swift */,
 				CBE0C0CD2C15D67100919D1E /* FightLoadView.swift */,
 				CBE0C0D02C15D67100919D1E /* GameView.swift */,
+				CBF7DE432C1D98DC00D4D475 /* PauseView.swift */,
 				CBE0C0CE2C15D67100919D1E /* ResultView.swift */,
 				CBE0C0D12C15D67100919D1E /* RulesView.swift */,
 				CBE0C0CF2C15D67100919D1E /* StartView.swift */,
@@ -360,10 +366,12 @@
 				4D1C13CB2C1C945700A883C6 /* ChooseAvatarView.swift in Sources */,
 				3CBF8B332C179B3A005E21B8 /* LeaderbordPlayerCell.swift in Sources */,
 				CBE0C0D52C15D67100919D1E /* GameView.swift in Sources */,
+				CBF7DE462C1D9D6400D4D475 /* PauseViewController.swift in Sources */,
 				3CBF8B2E2C179B2C005E21B8 /* Player.swift in Sources */,
 				CBB2C8092C1B21FF003FE319 /* Settings.swift in Sources */,
 				4D1C13CD2C1C95D800A883C6 /* ChooseAvatarViewController.swift in Sources */,
 				CBE0C0DF2C15D68300919D1E /* ResultViewController.swift in Sources */,
+				CBF7DE442C1D98DC00D4D475 /* PauseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
