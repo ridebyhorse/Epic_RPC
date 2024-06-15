@@ -47,6 +47,7 @@ class ChangeUsernameView: UIView {
         textField.placeholder = ""
         textField.font = .custom(font: .bold, size: 16)
         textField.textColor = #colorLiteral(red: 0.3012940884, green: 0.3054938018, blue: 0.2969334126, alpha: 1)
+        textField.becomeFirstResponder()
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
