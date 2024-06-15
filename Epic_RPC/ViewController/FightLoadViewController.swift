@@ -11,7 +11,7 @@ class FightLoadViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.isHidden = true
         view = FightLoadView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.navigationController?.pushViewController(GameViewController(), animated: true)
