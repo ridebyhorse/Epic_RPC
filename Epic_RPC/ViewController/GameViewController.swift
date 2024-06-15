@@ -20,7 +20,7 @@ class GameViewController: UIViewController {
     }
     
     private let game = Game()
-    private let gameView = GameView()
+    private let gameView = GameView(gameMode: .user)
     private var timer = Timer()
     private var musicPlayer = AVAudioPlayer()
     private var soundPlayer = AVAudioPlayer()
@@ -150,8 +150,8 @@ class GameViewController: UIViewController {
     private func setupBindings() {
         navBar.onLeftButtonTap
             .bind(onNext: { [weak self] in
-                self?.navigationController?.popViewController(animated: true)
-                self?.navigationController?.navigationBar.isHidden = false
+                self?.navigationController?.popToRootViewController(animated: true)
+                self?.musicPlayer.stop()
             })
             .disposed(by: disposeBag)
         navBar.onRightButtonTap
