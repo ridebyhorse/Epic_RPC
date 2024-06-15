@@ -78,6 +78,10 @@ class StorageService {
     
     ///сохраняет текущие настройки
     func saveSettings(_ settings: Settings) {
+        addPlayer(settings.firstPlayer)
+        if let player2 = settings.secondPlayer {
+            addPlayer(player2)
+        }
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(settings)

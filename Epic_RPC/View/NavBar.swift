@@ -23,7 +23,6 @@ class NavBar: UIView {
     private let leftButton: UIButton = {
         let button = UIButton()
         button.setImage(.back.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.contentEdgeInsets = .init(top: 3, left: 5, bottom: 3, right: 5)
         button.tintColor = .black
         button.contentMode = .scaleAspectFit
         return button
@@ -111,6 +110,7 @@ private extension NavBar {
         rightButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(15)
+            make.width.height.equalTo(28)
         }
 
         self.snp.makeConstraints { make in
