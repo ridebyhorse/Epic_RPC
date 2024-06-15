@@ -75,7 +75,8 @@ class GameViewController: UIViewController {
     }
     
     private func goToResults(_ result: Bool) {
-        navigationController?.pushViewController(ResultViewController(), animated: true)
+        let resultVC = ResultViewController(result: result, scorePlayer: userScore, pcPlayerScore: pcScore)
+        navigationController?.pushViewController(resultVC, animated: true)
         musicPlayer.stop()
     }
     
