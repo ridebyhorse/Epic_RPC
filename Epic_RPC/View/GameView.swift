@@ -21,6 +21,7 @@ class GameView: UIView {
     private let mainLabel = UILabel()
     private let userHand = UIImageView()
     private let pcHand = UIImageView()
+    private let blood = UIImageView()
     private let rockButton = UIButton()
     private let paperButton = UIButton()
     private let scissorsButton = UIButton()
@@ -60,6 +61,10 @@ class GameView: UIView {
         
         pcHand.image = .femaleHand
         pcHand.contentMode = .scaleAspectFit
+        
+        blood.image = .blood
+        blood.alpha = 0
+        blood.contentMode = .scaleAspectFit
         
         rockButton.setImage(.buttonGameStone, for: .normal)
         rockButton.tag = 0
@@ -101,6 +106,7 @@ class GameView: UIView {
         addSubview(mainLabel)
         addSubview(userHand)
         addSubview(pcHand)
+        addSubview(blood)
         addSubview(rockButton)
         addSubview(paperButton)
         addSubview(scissorsButton)
@@ -126,6 +132,10 @@ class GameView: UIView {
             pcHand.topAnchor.constraint(equalTo: topAnchor, constant: -80),
             pcHand.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -60),
             pcHand.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -50),
+            blood.centerXAnchor.constraint(equalTo: centerXAnchor),
+            blood.centerYAnchor.constraint(equalTo: centerYAnchor),
+            blood.widthAnchor.constraint(equalToConstant: 100),
+            blood.heightAnchor.constraint(equalToConstant: 100),
             paperButton.widthAnchor.constraint(equalToConstant: 80),
             paperButton.heightAnchor.constraint(equalTo: rockButton.widthAnchor),
             paperButton.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -165,6 +175,7 @@ class GameView: UIView {
             scoreProgressSeparator.centerYAnchor.constraint(equalTo: scoreProgressUser.centerYAnchor, constant: -75),
             scoreProgressSeparator.centerXAnchor.constraint(equalTo: scoreProgressUser.centerXAnchor)
         ])
+        animateHands()
     }
     
     func setupPlayerAvatar(avatar: String?) {
@@ -210,6 +221,7 @@ class GameView: UIView {
         userHand.image = .maleHand
         pcHand.image = .femaleHand
         setupMainLabel(text: "FIGHT")
+        animateHands()
     }
   
     private func setupMainLabel(text: String) {
@@ -227,6 +239,9 @@ class GameView: UIView {
         sender.layer.cornerRadius = sender.bounds.width / 2
         sender.layer.borderWidth = 4
         sender.layer.borderColor = UIColor.yellowGame.cgColor
+        rockButton.isEnabled = false
+        paperButton.isEnabled = false
+        scissorsButton.isEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             sender.layer.cornerRadius = 0
@@ -244,7 +259,54 @@ class GameView: UIView {
             guard let userImage = self?.userHand.image else { return }
             guard let pcImage = self?.pcHand.image else { return }
             self?.applyRoundResult(self?.onChoiceMade?(userImage, pcImage))
+            self?.animateHandsClapping(completion: {
+                self?.rockButton.isEnabled = true
+                self?.paperButton.isEnabled = true
+                self?.scissorsButton.isEnabled = true
+            })
         }
     }
+}
 
+// MARK: - Animation
+private extension GameView {
+    func animateHands() {
+        userHand.transform = CGAffineTransform.identity
+        pcHand.transform = CGAffineTransform.identity
+        
+        let scaledTransform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat], animations: {
+            self.userHand.transform = scaledTransform
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 1.0, delay: 0.5, options: [.autoreverse, .repeat], animations: {
+            self.pcHand.transform = scaledTransform
+        }, completion: nil)
+    }
+    
+    func animateHandsClapping(completion: @escaping () -> Void) {
+        let originalTransform = userHand.transform
+        let scaledTransform = originalTransform.scaledBy(x: 1.1, y: 1.3)
+        let rotation = CGAffineTransform(rotationAngle: -10 * .pi / 180)
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.autoreverse, .beginFromCurrentState], animations: {
+            self.userHand.transform = scaledTransform.concatenating(rotation)
+            self.pcHand.transform = scaledTransform.concatenating(rotation)
+        }, completion: { _ in
+            self.userHand.transform = originalTransform
+            self.pcHand.transform = originalTransform
+        })
+        
+        UIView.animate(withDuration: 0.15, delay: 0.0, options: [.curveEaseIn], animations: {
+            self.blood.alpha = 1
+            self.blood.transform = CGAffineTransform(scaleX: 3, y: 3)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.15, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.blood.alpha = 0
+                self.blood.transform = CGAffineTransform.identity
+            }, completion: nil)
+        })
+        completion()
+    }
 }
