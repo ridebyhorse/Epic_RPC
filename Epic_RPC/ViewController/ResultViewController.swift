@@ -9,7 +9,7 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    let resultView = ResultView
+    let resultView: ResultView
     
     init(result: Bool, scorePlayer: Int, pcPlayerScore: Int) {
         resultView = ResultView(result: result, playerScore: scorePlayer, pcPlayerScore: pcPlayerScore)

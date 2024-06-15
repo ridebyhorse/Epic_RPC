@@ -140,7 +140,7 @@ struct ResultViewProvider: PreviewProvider {
         ContainerView().ignoresSafeArea().previewInterfaceOrientation(.portrait)
     }
     struct ContainerView: UIViewRepresentable {
-        let view = ResultView()
+        let view = ResultView(result: true, playerScore: 3, pcPlayerScore: 1)
         
         func makeUIView(context: Context) -> some UIView {
             return view
