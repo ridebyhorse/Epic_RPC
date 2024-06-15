@@ -241,11 +241,11 @@ class GameView: UIView {
         }
     }
     
-    func restartRound(seconds: RoundTime) {
+    func restartRound(seconds: Int) {
         switch seconds {
-        case .s30:
+        case 30:
             countDownLabel.text = "0:30"
-        case .s60:
+        default:
             countDownLabel.text = "1:00"
         }
         timerProgress.progress = 0

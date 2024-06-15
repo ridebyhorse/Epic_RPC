@@ -20,7 +20,7 @@ class GameViewController: UIViewController {
     }
     
     private let game = Game()
-    private let gameView = GameView(gameMode: .user)
+    private let gameView: GameView
     private var timer = Timer()
     private var musicPlayer = AVAudioPlayer()
     private var soundPlayer = AVAudioPlayer()
@@ -29,8 +29,8 @@ class GameViewController: UIViewController {
         .leftButton(.back)
         .rightButton(.buttonGamePause)
     private let disposeBag = DisposeBag()
-    private let secondsTotal: Float = 30.0
-    private var secondsCount = 30
+    private let secondsTotal: Float
+    private var secondsCount: Int
     private var userScore = 0 {
         didSet {
             if userScore == 3 {
@@ -45,7 +45,30 @@ class GameViewController: UIViewController {
             }
         }
     }
-
+    
+    init() {
+        let gameMode: GameMode
+        if Game.currentSettings.secondPlayer == nil {
+            gameMode = .pc
+        } else {
+            gameMode = .user
+        }
+        gameView = GameView(gameMode: gameMode)
+        switch Game.currentSettings.roundTime {
+        case .s30:
+            secondsCount = 30
+            secondsTotal = 30.0
+        case .s60:
+            secondsCount = 60
+            secondsTotal = 60.0
+        }
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -94,6 +117,8 @@ class GameViewController: UIViewController {
         let resultVC = ResultViewController(result: result, scorePlayer: userScore, pcPlayerScore: pcScore)
         navigationController?.pushViewController(resultVC, animated: true)
         musicPlayer.stop()
+        StorageService.shared.updateUserStatistics(username: Game.currentSettings.firstPlayer.name, win: result)
+        StorageService.shared.updateUserStatistics(username: Game.currentSettings.secondPlayer?.name ?? "PC", win: !result)
     }
     
     private func calculateWin(_ userImage: UIImage, _ pcImage: UIImage) -> Bool? {
@@ -112,9 +137,9 @@ class GameViewController: UIViewController {
     }
     
     private func restartRound() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             self?.setTimer(action: .start)
-            self?.gameView.restartRound(seconds: .s30)
+            self?.gameView.restartRound(seconds: Int(self?.secondsTotal ?? 30))
         }
     }
     
@@ -176,10 +201,6 @@ class GameViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         setTimer(action: .continue)
         musicPlayer.play()
-    }
-    
-    private func setupSettings() {
-//        Game.currentSettings
     }
     
     @objc private func updateCountDown(_ sender: Timer) {

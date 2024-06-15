@@ -53,6 +53,7 @@ class StorageService {
                     user.image = player.image
                     currentPlayers.remove(at: index)
                     currentPlayers.insert(user, at: index)
+                    savePlayers(currentPlayers)
                 }
             }
         }
@@ -71,6 +72,7 @@ class StorageService {
             }
             currentPlayers.remove(at: index)
             currentPlayers.insert(user, at: index)
+            savePlayers(currentPlayers)
         }
     }
     
