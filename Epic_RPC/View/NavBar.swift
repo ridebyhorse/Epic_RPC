@@ -16,7 +16,8 @@ import RxGesture
 class NavBar: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.font = .custom(font: .regular, size: 25)
+        //label.font = .systemFont(ofSize: 24, weight: .semibold)
         return label
     }()
 
