@@ -189,7 +189,7 @@ class GameViewController: UIViewController {
             .bind(onNext: { [weak self] in
                 self?.putOnPause()
                 self?.present(PauseViewController(onHomeTap: {self?.gotoStartVC()}, onPlayTap: {self?.continueGame()}), animated: true)
-                self?.navigationController?.navigationBar.isHidden = false
+                self?.navigationController?.navigationBar.isHidden = true
             })
             .disposed(by: disposeBag)
     }
