@@ -47,10 +47,12 @@ class StorageService {
             currentPlayers.append(player)
             savePlayers(currentPlayers)
         } else {
+            print(player.image)
             if let index = currentPlayers.firstIndex(where: { $0.name == player.name }) {
                 var user = currentPlayers[index]
                 if user.image != player.image {
                     user.image = player.image
+                    print(user)
                     currentPlayers.remove(at: index)
                     currentPlayers.insert(user, at: index)
                     savePlayers(currentPlayers)

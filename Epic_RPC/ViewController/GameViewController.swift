@@ -163,8 +163,14 @@ class GameViewController: UIViewController {
     }
     
     private func setupPlayers() {
-        let urlNusic = Bundle.main.url(forResource: "449640__cnupoc__main-theme", withExtension: "mp3")
-        musicPlayer = try! AVAudioPlayer(contentsOf: urlNusic!)
+        let urlMusic: URL?
+        if let music = Music(rawValue: Game.currentSettings.music ?? "Main Theme") {
+            urlMusic = MusicManager.getMusicFor(music)
+        } else {
+            urlMusic = Bundle.main.url(forResource: "449640__cnupoc__main-theme", withExtension: "mp3")
+        }
+        
+        musicPlayer = try! AVAudioPlayer(contentsOf: urlMusic!)
         musicPlayer.numberOfLoops =  -1
         musicPlayer.play()
         

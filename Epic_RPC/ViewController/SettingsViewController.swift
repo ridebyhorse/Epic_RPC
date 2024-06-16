@@ -6,25 +6,40 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxGesture
 
 final class SettingsViewController: UIViewController {
 
 	private let settingsView = SettingsView()
-
+    private let navBar = NavBar()
+        .title("Settings")
+        .leftButton(.back)
+    private let disposeBag = DisposeBag()
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view = settingsView
-		setNavigationBar()
+        setupBindings()
+        navigationController?.navigationBar.isHidden = true
+        view.addSubviews(navBar)
+        view.subviews.forEach({$0.translatesAutoresizingMaskIntoConstraints = false})
+        
+        NSLayoutConstraint.activate([
+            navBar.widthAnchor.constraint(equalTo: view.widthAnchor),
+            navBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        ])
 	}
 
-	private func setNavigationBar() {
-		let appearance = UINavigationBarAppearance()
-		appearance.configureWithOpaqueBackground()
-		appearance.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 24)]
-		appearance.shadowColor = nil
-
-		navigationController?.navigationBar.standardAppearance = appearance
-		navigationController?.navigationBar.tintColor = .black
-		title = "Settings"
-	}
+    private func setupBindings() {
+        navBar.onLeftButtonTap
+            .bind(onNext: { [weak self] in
+                if let settings = self?.settingsView.onClose?() {
+                    Game().setupGameSettings(settings: settings)
+                }
+                
+                self?.navigationController?.popToRootViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
 }

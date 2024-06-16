@@ -9,6 +9,8 @@ import UIKit
 
 class ChooseAvatarViewController: UIViewController {
     
+    var number = 0
+    
     let charactersArray: [UIImage?] = [
         UIImage(named: "character1"),
         UIImage(named: "character2"),
@@ -21,7 +23,7 @@ class ChooseAvatarViewController: UIViewController {
         ]
 
     let chooseAvatarView = ChooseAvatarView()
-    var getAvatar: ((UIImage) -> ())?
+    var getAvatar: ((UIImage, String) -> ())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,28 @@ class ChooseAvatarViewController: UIViewController {
         
         let okButtonPressed = UIAction { [unowned self] _ in
             guard let avatar = chooseAvatarView.testImageView.image else { return }
-            getAvatar?(avatar)
+            let name: String
+            switch number {
+            case 0:
+                name = "character1"
+            case 1:
+                name = "character2"
+            case 2:
+                name = "character3"
+            case 3:
+                name = "character4"
+            case 4:
+                name = "character5"
+            case 5:
+                name = "character6"
+            case 6:
+                name = "character7"
+            case 7:
+                name = "character8"
+            default:
+                name = "character1"
+            }
+            getAvatar?(avatar, name)
             dismiss(animated: true)
         }
         chooseAvatarView.okButton.addAction(okButtonPressed, for: .touchUpInside)
@@ -52,6 +75,7 @@ extension ChooseAvatarViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         chooseAvatarView.testImageView.image = charactersArray[indexPath.item]
+        number = indexPath.item
     }
 }
 
@@ -84,6 +108,7 @@ extension ChooseAvatarViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCell.reuseID, for: indexPath) as? CharacterCell else { return collectionView.dequeueReusableCell(withReuseIdentifier: "DefaultCellID", for: indexPath) }
         let image = charactersArray[indexPath.row]
         cell.avatarImageView.image = image
+        
         return cell
         
     }

@@ -15,15 +15,22 @@ enum GameGesture {
 
 struct Game {
     
-    private (set) static var currentSettings: Settings = Settings(firstPlayer: Player(image: "avatar_user", name: "Player 1"), secondPlayer: nil, roundTime: .s30, music: "449640__cnupoc__main-theme")
+    private (set) static var currentSettings: Settings = Settings(firstPlayer: Player(image: "avatar_user", name: "Player 1"), secondPlayer: nil, roundTime: .s30, music: "449640__cnupoc__main-theme") {
+        didSet {
+            print(currentSettings)
+        }
+    }
     
     func calculateWin(user: GameGesture, pc: GameGesture) -> Bool? {
         check(user, pc)
     }
     
     func setupGameSettings(settings: Settings) {
-        Game.currentSettings = settings
+        
         StorageService.shared.saveSettings(settings)
+        if let settings = StorageService.shared.getLastSettings() {
+            Game.currentSettings = settings
+        }
     }
     
     private func check(_ g1: GameGesture, _ g2: GameGesture) -> Bool? {

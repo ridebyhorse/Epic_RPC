@@ -9,7 +9,13 @@ import UIKit
 
 final class SettingsView: UIView {
 
-	private var friendPlayerIsHide = false
+//	private var friendPlayerIsHide = false
+    
+    var onClose: (() -> Settings)?
+    
+    private var time: RoundTime = .s30
+    private var music: Music = .mainTheme
+    private var gameMode: GameMode = .pc
 
 	//MARK: - UI Elements
 
@@ -35,15 +41,16 @@ final class SettingsView: UIView {
 	private let buttonArrowImage = UIImage(systemName: "chevron.right")
 
 	//players
-	let firstPlayerImage = UIImageView()
-	let secondPlayerImage = UIImageView()
-
-	let firstPlayerNameButton = UIButton()
-	let secondPlayerNameButton = UIButton()
+//	let firstPlayerImage = UIImageView()
+//	let secondPlayerImage = UIImageView()
+//
+//	let firstPlayerNameButton = UIButton()
+//	let secondPlayerNameButton = UIButton()
 
 	//MARK: - Lifecycle
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+        onClose = { self.getSettings() }
 		setupViews()
 	}
 
@@ -72,13 +79,17 @@ private extension SettingsView {
 
 		setGameTime30cec.setTitle("30 sec", for: .normal)
 		setGameTime30cec.titleLabel?.font = .custom(font: .medium, size: 16)
-		setGameTime30cec.backgroundColor = .buttonOrange
+		setGameTime30cec.backgroundColor = .greenGame
 		setGameTime30cec.layer.cornerRadius = 15
+        setGameTime30cec.tag = 0
+        setGameTime30cec.addTarget(self, action: #selector(choseTime), for: .touchUpInside)
 
 		setGameTime60cec.setTitle("60 sec", for: .normal)
 		setGameTime60cec.titleLabel?.font = setGameTime30cec.titleLabel?.font
-		setGameTime60cec.backgroundColor = setGameTime30cec.backgroundColor
+        setGameTime60cec.backgroundColor = .buttonOrange
 		setGameTime60cec.layer.cornerRadius = setGameTime30cec.layer.cornerRadius
+        setGameTime60cec.tag = 1
+        setGameTime60cec.addTarget(self, action: #selector(choseTime), for: .touchUpInside)
 
 		addSubview(topView)
 		topView.addSubview(gameTimeLabel)
@@ -99,10 +110,28 @@ private extension SettingsView {
 		buttonBackground2.layer.masksToBounds = buttonBackground1.layer.masksToBounds
 
 		setMusicButton.tintColor = .white
-		setMusicButton.setTitle("Мелодия 1 ", for: .normal) // test
+		setMusicButton.setTitle("Main Theme", for: .normal) // test
 		setMusicButton.titleLabel?.font = .custom(font: .regular, size: 14)
 		setMusicButton.setImage(buttonArrowImage, for: .normal)
 		setMusicButton.semanticContentAttribute = .forceRightToLeft
+        var menuItems: [UIAction] {
+            return [
+                UIAction(title: "Main Theme", image: nil, handler: { (_) in
+                    self.setMusicButton.setTitle("Main Theme", for: .normal)
+                    self.music = .mainTheme
+                }),
+                UIAction(title: "Bass Theme", image: nil, handler: { (_) in
+                    self.setMusicButton.setTitle("Bass Theme", for: .normal)
+                    self.music = .bassTheme
+                }),
+                UIAction(title: "Tense Theme", image: nil, handler: { (_) in
+                    self.setMusicButton.setTitle("Tense Theme", for: .normal)
+                    self.music = .tenseTheme
+                })
+            ]
+        }
+        setMusicButton.menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuItems)
+        setMusicButton.showsMenuAsPrimaryAction = true
 
 		backgroundMusicLabel.text = "Фоновая музыка"
 		backgroundMusicLabel.font = .custom(font: .bold, size: 16)
@@ -113,6 +142,9 @@ private extension SettingsView {
 		gameModeLabel.font = backgroundMusicLabel.font
 		gameModeLabel.textColor = backgroundMusicLabel.textColor
 		gameModeLabel.textAlignment = backgroundMusicLabel.textAlignment
+        
+        switchGameMode.onTintColor = .greenGame
+        switchGameMode.addTarget(self, action: #selector(switchedMode), for: .valueChanged)
 
 		addSubview(bottomView)
 		bottomView.addSubview(buttonBackground1)
@@ -123,27 +155,27 @@ private extension SettingsView {
 		buttonBackground2.addSubview(switchGameMode)
 
 		//players
-		firstPlayerImage.image = .avatarUser
-		secondPlayerImage.image = .avatarPc
+//		firstPlayerImage.image = .avatarUser
+//		secondPlayerImage.image = .avatarPc
+//
+//		firstPlayerNameButton.setTitle("Player 1", for: .normal)
+//		firstPlayerNameButton.titleLabel?.font = .custom(font: .bold, size: 16)
+//		firstPlayerNameButton.setTitleColor(.systemRed, for: .normal) // test
+//		firstPlayerNameButton.layer.cornerRadius = 20
+//		firstPlayerNameButton.layer.borderWidth = 1
+//		firstPlayerNameButton.layer.borderColor = UIColor.systemGray4.cgColor
+//
+//		secondPlayerNameButton.setTitle("Player 2", for: .normal)
+//		secondPlayerNameButton.titleLabel?.font = firstPlayerNameButton.titleLabel?.font
+//		secondPlayerNameButton.setTitleColor(.systemCyan, for: .normal) // test
+//		secondPlayerNameButton.layer.cornerRadius = firstPlayerNameButton.layer.cornerRadius
+//		secondPlayerNameButton.layer.borderWidth = firstPlayerNameButton.layer.borderWidth
+//		secondPlayerNameButton.layer.borderColor = firstPlayerNameButton.layer.borderColor
 
-		firstPlayerNameButton.setTitle("Player 1", for: .normal)
-		firstPlayerNameButton.titleLabel?.font = .custom(font: .bold, size: 16)
-		firstPlayerNameButton.setTitleColor(.systemRed, for: .normal) // test
-		firstPlayerNameButton.layer.cornerRadius = 20
-		firstPlayerNameButton.layer.borderWidth = 1
-		firstPlayerNameButton.layer.borderColor = UIColor.systemGray4.cgColor
-
-		secondPlayerNameButton.setTitle("Player 2", for: .normal)
-		secondPlayerNameButton.titleLabel?.font = firstPlayerNameButton.titleLabel?.font
-		secondPlayerNameButton.setTitleColor(.systemCyan, for: .normal) // test
-		secondPlayerNameButton.layer.cornerRadius = firstPlayerNameButton.layer.cornerRadius
-		secondPlayerNameButton.layer.borderWidth = firstPlayerNameButton.layer.borderWidth
-		secondPlayerNameButton.layer.borderColor = firstPlayerNameButton.layer.borderColor
-
-		addSubview(firstPlayerImage)
-		addSubview(secondPlayerImage)
-		addSubview(firstPlayerNameButton)
-		addSubview(secondPlayerNameButton)
+//		addSubview(firstPlayerImage)
+//		addSubview(secondPlayerImage)
+//		addSubview(firstPlayerNameButton)
+//		addSubview(secondPlayerNameButton)
 
 		setupConstraints()
 	}
@@ -162,10 +194,10 @@ private extension SettingsView {
 		gameModeLabel.translatesAutoresizingMaskIntoConstraints = false
 		setMusicButton.translatesAutoresizingMaskIntoConstraints = false
 		switchGameMode.translatesAutoresizingMaskIntoConstraints = false
-		firstPlayerImage.translatesAutoresizingMaskIntoConstraints = false
-		secondPlayerImage.translatesAutoresizingMaskIntoConstraints = false
-		firstPlayerNameButton.translatesAutoresizingMaskIntoConstraints = false
-		secondPlayerNameButton.translatesAutoresizingMaskIntoConstraints = false
+//		firstPlayerImage.translatesAutoresizingMaskIntoConstraints = false
+//		secondPlayerImage.translatesAutoresizingMaskIntoConstraints = false
+//		firstPlayerNameButton.translatesAutoresizingMaskIntoConstraints = false
+//		secondPlayerNameButton.translatesAutoresizingMaskIntoConstraints = false
 
 		NSLayoutConstraint.activate([
 			//top
@@ -214,29 +246,63 @@ private extension SettingsView {
 			gameModeLabel.centerYAnchor.constraint(equalTo: buttonBackground2.centerYAnchor),
 
 			switchGameMode.trailingAnchor.constraint(equalTo: setMusicButton.trailingAnchor),
-			switchGameMode.centerYAnchor.constraint(equalTo: buttonBackground2.centerYAnchor),
+			switchGameMode.centerYAnchor.constraint(equalTo: buttonBackground2.centerYAnchor)
 
-			firstPlayerImage.topAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: 22),
-			firstPlayerImage.leadingAnchor.constraint(equalTo: buttonBackground1.leadingAnchor),
-			firstPlayerImage.heightAnchor.constraint(equalToConstant: 46),
-			firstPlayerImage.widthAnchor.constraint(equalTo: firstPlayerImage.heightAnchor),
-
-			secondPlayerImage.topAnchor.constraint(equalTo: firstPlayerImage.bottomAnchor, constant: 22),
-			secondPlayerImage.leadingAnchor.constraint(equalTo: buttonBackground1.leadingAnchor),
-			secondPlayerImage.heightAnchor.constraint(equalToConstant: 46),
-			secondPlayerImage.widthAnchor.constraint(equalTo: secondPlayerImage.heightAnchor),
-
-			firstPlayerNameButton.topAnchor.constraint(equalTo: firstPlayerImage.topAnchor),
-			firstPlayerNameButton.leadingAnchor.constraint(equalTo: firstPlayerImage.trailingAnchor, constant: 7),
-			firstPlayerNameButton.trailingAnchor.constraint(equalTo: buttonBackground2.trailingAnchor),
-			firstPlayerNameButton.bottomAnchor.constraint(equalTo: firstPlayerImage.bottomAnchor),
-
-			secondPlayerNameButton.topAnchor.constraint(equalTo: secondPlayerImage.topAnchor),
-			secondPlayerNameButton.leadingAnchor.constraint(equalTo: firstPlayerImage.trailingAnchor, constant: 7),
-			secondPlayerNameButton.trailingAnchor.constraint(equalTo: buttonBackground2.trailingAnchor),
-			secondPlayerNameButton.bottomAnchor.constraint(equalTo: secondPlayerImage.bottomAnchor),
+//			firstPlayerImage.topAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: 22),
+//			firstPlayerImage.leadingAnchor.constraint(equalTo: buttonBackground1.leadingAnchor),
+//			firstPlayerImage.heightAnchor.constraint(equalToConstant: 46),
+//			firstPlayerImage.widthAnchor.constraint(equalTo: firstPlayerImage.heightAnchor),
+//
+//			secondPlayerImage.topAnchor.constraint(equalTo: firstPlayerImage.bottomAnchor, constant: 22),
+//			secondPlayerImage.leadingAnchor.constraint(equalTo: buttonBackground1.leadingAnchor),
+//			secondPlayerImage.heightAnchor.constraint(equalToConstant: 46),
+//			secondPlayerImage.widthAnchor.constraint(equalTo: secondPlayerImage.heightAnchor),
+//
+//			firstPlayerNameButton.topAnchor.constraint(equalTo: firstPlayerImage.topAnchor),
+//			firstPlayerNameButton.leadingAnchor.constraint(equalTo: firstPlayerImage.trailingAnchor, constant: 7),
+//			firstPlayerNameButton.trailingAnchor.constraint(equalTo: buttonBackground2.trailingAnchor),
+//			firstPlayerNameButton.bottomAnchor.constraint(equalTo: firstPlayerImage.bottomAnchor),
+//
+//			secondPlayerNameButton.topAnchor.constraint(equalTo: secondPlayerImage.topAnchor),
+//			secondPlayerNameButton.leadingAnchor.constraint(equalTo: firstPlayerImage.trailingAnchor, constant: 7),
+//			secondPlayerNameButton.trailingAnchor.constraint(equalTo: buttonBackground2.trailingAnchor),
+//			secondPlayerNameButton.bottomAnchor.constraint(equalTo: secondPlayerImage.bottomAnchor),
 		])
 	}
+    
+    private func getSettings() -> Settings {
+        let user = Game.currentSettings.firstPlayer
+        let secondUser: Player?
+        if gameMode == .user {
+            secondUser = Player(image: "avatar_pc", name: "User2")
+        } else {
+            secondUser = nil
+        }
+        return Settings(firstPlayer: user, secondPlayer: secondUser, roundTime: time, music: music.rawValue)
+    }
+    
+    @objc private func choseTime(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            setGameTime30cec.backgroundColor = .greenGame
+            setGameTime60cec.backgroundColor = .buttonOrange
+            time = .s30
+        default:
+            setGameTime30cec.backgroundColor = .buttonOrange
+            setGameTime60cec.backgroundColor = .greenGame
+            time = .s60
+        }
+        
+    }
+    
+    @objc private func switchedMode(_ sender: UISwitch) {
+        if sender.isOn {
+            gameMode = .user
+        } else {
+            gameMode = .pc
+        }
+    }
+    
 }
 
 //MARK: - Preview

@@ -271,6 +271,9 @@ extension LeaderboardViewController {
         userNameVC.getUsername = { [weak self] userName in
             guard let self = self else { return }
             self.playerNameLabel.text = userName
+            self.playerImage.image = .avatarUser
+            StorageService.shared.addPlayer(Player(image: "avatar_user", name: userName))
+            Game().setupGameSettings(settings: Game.currentSettings)
         }
         present(userNameVC, animated: true)
     }
@@ -279,10 +282,11 @@ extension LeaderboardViewController {
         let userAvatarVC = ChooseAvatarViewController()
         userAvatarVC.modalPresentationStyle = .overFullScreen
         userAvatarVC.modalTransitionStyle = .crossDissolve
-        userAvatarVC.getAvatar = { [weak self] image in
+        userAvatarVC.getAvatar = { [weak self] image, name in
             guard let self = self else { return }
             self.playerImage.image = image
-            
+            StorageService.shared.addPlayer(Player(image: name, name: Game.currentSettings.firstPlayer.name))
+            Game().setupGameSettings(settings: Game.currentSettings)
         }
         present(userAvatarVC, animated: true)
     }
