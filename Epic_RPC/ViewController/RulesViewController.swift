@@ -14,6 +14,7 @@ final class RulesViewController: UIViewController {
         super.viewDidLoad()
         view = rulesView
         setNavigationBar()
+        navigationController?.navigationBar.isHidden = false
     }
     
     private func setNavigationBar() {

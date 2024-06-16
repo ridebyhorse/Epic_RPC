@@ -12,6 +12,7 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
+*.DS_Store
 
 ## Playgrounds
 timeline.xctimeline
@@ -60,3 +61,6 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+Epic_RPC/.DS_Store
+Epic_RPC.xcodeproj/xcuserdata/mariamozaeva.xcuserdatad/xcschemes/xcschememanagement.plist
+.DS_Store

@@ -90,7 +90,7 @@ class LeaderboardViewController: UIViewController {
         return table
     }()
     
-    private let players: [Player] = StorageService.shared.getMockPlayers().sorted { $0.score > $1.score }
+    private let players: [Player] = StorageService.shared.getPlayers().sorted { $0.score > $1.score }
     
     private let disposeBag = DisposeBag()
     
@@ -109,7 +109,6 @@ class LeaderboardViewController: UIViewController {
         navBar.onLeftButtonTap
             .bind(onNext: { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
-                self?.navigationController?.navigationBar.isHidden = false
             })
             .disposed(by: disposeBag)
     }

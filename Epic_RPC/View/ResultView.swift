@@ -29,8 +29,15 @@ class ResultView: UIView {
     let stackView = UIStackView()
     let buttonsStackView = UIStackView()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    let result: Bool?
+    let playerScore: Int
+    let pcPlayerScore: Int
+    
+    init(result: Bool, playerScore: Int, pcPlayerScore: Int) {
+        self.result = result
+        self.playerScore = playerScore
+        self.pcPlayerScore = pcPlayerScore
+        super.init(frame: .zero)
         setupViews()
         setupConstraints()
     }
@@ -84,6 +91,19 @@ extension ResultView {
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         characterImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        guard let result = result else { return }
+        scoreLabel.text = "\(playerScore)" + "-" + "\(pcPlayerScore)"
+        if result == true {
+            backgroundImageView.image = UIImage(named: "winBackground")
+            resultLabel.text = "You win"
+            characterImageView.image = UIImage(named: Game.currentSettings.firstPlayer.image!)
+        } else {
+            backgroundImageView.image = UIImage(named: "loseBackground")
+            resultLabel.text = "You lose"
+            resultLabel.textColor = #colorLiteral(red: 0.142113179, green: 0.09895325452, blue: 0.2372964919, alpha: 1)
+            characterImageView.image = UIImage(named: Game.currentSettings.secondPlayer?.image ?? "avatar_pc")
+        }
     }
     
     //MARK: - Constraints
@@ -97,6 +117,8 @@ extension ResultView {
             
             characterImageView.centerXAnchor.constraint(equalTo: rectangleImageView.centerXAnchor),
             characterImageView.centerYAnchor.constraint(equalTo: rectangleImageView.centerYAnchor),
+            characterImageView.widthAnchor.constraint(equalToConstant: 67.17),
+            characterImageView.heightAnchor.constraint(equalToConstant: 78.05),
             
             rectangleImageView.heightAnchor.constraint(equalToConstant: 176),
             resultLabel.heightAnchor.constraint(equalToConstant: 25),
@@ -118,7 +140,7 @@ struct ResultViewProvider: PreviewProvider {
         ContainerView().ignoresSafeArea().previewInterfaceOrientation(.portrait)
     }
     struct ContainerView: UIViewRepresentable {
-        let view = ResultView()
+        let view = ResultView(result: true, playerScore: 3, pcPlayerScore: 1)
         
         func makeUIView(context: Context) -> some UIView {
             return view

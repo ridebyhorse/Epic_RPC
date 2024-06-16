@@ -36,6 +36,7 @@
 		CBB2C8092C1B21FF003FE319 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2C8082C1B21FF003FE319 /* Settings.swift */; };
 		CBBFE01A2C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBBFE0192C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav */; };
 		CBBFE01C2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CBBFE01B2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 */; };
+		CBC3A08A2C1EB335008DF9D1 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC3A0892C1EB335008DF9D1 /* Music.swift */; };
 		CBCC59A92C18457400F194B5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC59A82C18457400F194B5 /* Game.swift */; };
 		CBE0C0BA2C15D5E000919D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */; };
 		CBE0C0BC2C15D5E000919D1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0BB2C15D5E000919D1E /* SceneDelegate.swift */; };
@@ -51,6 +52,10 @@
 		CBE0C0DE2C15D68300919D1E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0D92C15D68300919D1E /* GameViewController.swift */; };
 		CBE0C0DF2C15D68300919D1E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */; };
 		CBE0C0E02C15D68300919D1E /* FightLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */; };
+		CBF7DE442C1D98DC00D4D475 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7DE432C1D98DC00D4D475 /* PauseView.swift */; };
+		CBF7DE462C1D9D6400D4D475 /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7DE452C1D9D6400D4D475 /* PauseViewController.swift */; };
+		CBF7DE482C1DAB2D00D4D475 /* 512379__mrthenoronha__bass-line-theme-loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = CBF7DE472C1DAB2D00D4D475 /* 512379__mrthenoronha__bass-line-theme-loop.wav */; };
+		CBF7DE4A2C1DAB3300D4D475 /* 320553__griffon_designs__dirty-grind.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CBF7DE492C1DAB3300D4D475 /* 320553__griffon_designs__dirty-grind.aiff */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +80,7 @@
 		CBB2C8082C1B21FF003FE319 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		CBBFE0192C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "573376__johnloser__cyber-punch-01.wav"; sourceTree = "<group>"; };
 		CBBFE01B2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "449640__cnupoc__main-theme.mp3"; sourceTree = "<group>"; };
+		CBC3A0892C1EB335008DF9D1 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		CBCC59A82C18457400F194B5 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		CBE0C0B62C15D5E000919D1E /* Epic_RPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epic_RPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE0C0B92C15D5E000919D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +98,10 @@
 		CBE0C0D92C15D68300919D1E /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FightLoadViewController.swift; sourceTree = "<group>"; };
+		CBF7DE432C1D98DC00D4D475 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
+		CBF7DE452C1D9D6400D4D475 /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
+		CBF7DE472C1DAB2D00D4D475 /* 512379__mrthenoronha__bass-line-theme-loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "512379__mrthenoronha__bass-line-theme-loop.wav"; sourceTree = "<group>"; };
+		CBF7DE492C1DAB3300D4D475 /* 320553__griffon_designs__dirty-grind.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "320553__griffon_designs__dirty-grind.aiff"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				3CBF8B2D2C179B2C005E21B8 /* Player.swift */,
+				CBC3A0892C1EB335008DF9D1 /* Music.swift */,
 				CBCC59A82C18457400F194B5 /* Game.swift */,
 				CBB2C8082C1B21FF003FE319 /* Settings.swift */,
 			);
@@ -163,6 +174,8 @@
 		CBBFE0182C1B742B00746F77 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				CBF7DE492C1DAB3300D4D475 /* 320553__griffon_designs__dirty-grind.aiff */,
+				CBF7DE472C1DAB2D00D4D475 /* 512379__mrthenoronha__bass-line-theme-loop.wav */,
 				CBBFE0192C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav */,
 				CBBFE01B2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 */,
 			);
@@ -205,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				4DC4C5162C1AE3E0000A4FEF /* ChangeUsernameViewController.swift */,
+				CBF7DE452C1D9D6400D4D475 /* PauseViewController.swift */,
 				4D1C13CC2C1C95D800A883C6 /* ChooseAvatarViewController.swift */,
 				CBE0C0DB2C15D68300919D1E /* FightLoadViewController.swift */,
 				CBE0C0D92C15D68300919D1E /* GameViewController.swift */,
@@ -235,6 +249,7 @@
 				4DC4C5142C1AD8A0000A4FEF /* ChangeUsernameView.swift */,
 				CBE0C0CD2C15D67100919D1E /* FightLoadView.swift */,
 				CBE0C0D02C15D67100919D1E /* GameView.swift */,
+				CBF7DE432C1D98DC00D4D475 /* PauseView.swift */,
 				CBE0C0CE2C15D67100919D1E /* ResultView.swift */,
 				CBE0C0D12C15D67100919D1E /* RulesView.swift */,
 				CBE0C0CF2C15D67100919D1E /* StartView.swift */,
@@ -327,8 +342,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBE0C0C62C15D5E100919D1E /* LaunchScreen.storyboard in Resources */,
+				CBF7DE4A2C1DAB3300D4D475 /* 320553__griffon_designs__dirty-grind.aiff in Resources */,
 				CB3989292C16462900E77097 /* Rubik-Regular.ttf in Resources */,
 				CBBFE01C2C1B74AD00746F77 /* 449640__cnupoc__main-theme.mp3 in Resources */,
+				CBF7DE482C1DAB2D00D4D475 /* 512379__mrthenoronha__bass-line-theme-loop.wav in Resources */,
 				CBBFE01A2C1B749500746F77 /* 573376__johnloser__cyber-punch-01.wav in Resources */,
 				CB3989262C16450700E77097 /* Rubik-Bold.ttf in Resources */,
 				CBE0C0C32C15D5E100919D1E /* Assets.xcassets in Resources */,
@@ -360,6 +377,7 @@
 				CBE0C0BC2C15D5E000919D1E /* SceneDelegate.swift in Sources */,
 				CBE0C0D22C15D67100919D1E /* FightLoadView.swift in Sources */,
 				CBE0C0DE2C15D68300919D1E /* GameViewController.swift in Sources */,
+				CBC3A08A2C1EB335008DF9D1 /* Music.swift in Sources */,
 				3CBF8B282C179B20005E21B8 /* Uiview+Ext.swift in Sources */,
 				879E01622C1CA22A00D479AE /* SettingsView.swift in Sources */,
 				4DC4C5152C1AD8A0000A4FEF /* ChangeUsernameView.swift in Sources */,
@@ -368,10 +386,12 @@
 				3CBF8B332C179B3A005E21B8 /* LeaderbordPlayerCell.swift in Sources */,
 				CBE0C0D52C15D67100919D1E /* GameView.swift in Sources */,
 				879E01602C1CA0ED00D479AE /* SettingsViewController.swift in Sources */,
+				CBF7DE462C1D9D6400D4D475 /* PauseViewController.swift in Sources */,
 				3CBF8B2E2C179B2C005E21B8 /* Player.swift in Sources */,
 				CBB2C8092C1B21FF003FE319 /* Settings.swift in Sources */,
 				4D1C13CD2C1C95D800A883C6 /* ChooseAvatarViewController.swift in Sources */,
 				CBE0C0DF2C15D68300919D1E /* ResultViewController.swift in Sources */,
+				CBF7DE442C1D98DC00D4D475 /* PauseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

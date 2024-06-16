@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum GameMode {
+    case pc
+    case user
+}
+
 class GameView: UIView {
     
     ///После выбора жеста получаем результат раунда
@@ -17,13 +22,18 @@ class GameView: UIView {
     
     var stopTimer: (() -> Void)?
     
+    private let gameMode: GameMode
+    private var userSwitched = false
+    private var userChoice = UIImage()
     private let background = UIImageView()
     private let mainLabel = UILabel()
     private let userHand = UIImageView()
     private let pcHand = UIImageView()
+    private let blood = UIImageView()
     private let rockButton = UIButton()
     private let paperButton = UIButton()
     private let scissorsButton = UIButton()
+    private let changeUserButton = UIButton()
     private let timerProgress = UIProgressView()
     private let countDownLabel = UILabel()
     private let userAvatar = UIImageView()
@@ -32,7 +42,8 @@ class GameView: UIView {
     private let scoreProgressPc = UIProgressView()
     private let scoreProgressSeparator = UIView()
 
-    init() {
+    init(gameMode: GameMode) {
+        self.gameMode = gameMode
         super.init(frame: .zero)
         setupUI()
     }
@@ -61,6 +72,10 @@ class GameView: UIView {
         pcHand.image = .femaleHand
         pcHand.contentMode = .scaleAspectFit
         
+        blood.image = .blood
+        blood.alpha = 0
+        blood.contentMode = .scaleAspectFit
+        
         rockButton.setImage(.buttonGameStone, for: .normal)
         rockButton.tag = 0
         rockButton.addTarget(self, action: #selector(madeChoice), for: .touchUpInside)
@@ -72,6 +87,9 @@ class GameView: UIView {
         scissorsButton.setImage(.buttonGameScissors, for: .normal)
         scissorsButton.tag = 2
         scissorsButton.addTarget(self, action: #selector(madeChoice), for: .touchUpInside)
+        
+        changeUserButton.setImage(.buttonGameSwitchPlayer, for: .normal)
+        changeUserButton.addTarget(self, action: #selector(changeUserTapped), for: .touchUpInside)
         
         timerProgress.trackTintColor = .deepBlueGame
         timerProgress.progressTintColor = .greenGame
@@ -101,6 +119,7 @@ class GameView: UIView {
         addSubview(mainLabel)
         addSubview(userHand)
         addSubview(pcHand)
+        addSubview(blood)
         addSubview(rockButton)
         addSubview(paperButton)
         addSubview(scissorsButton)
@@ -126,6 +145,10 @@ class GameView: UIView {
             pcHand.topAnchor.constraint(equalTo: topAnchor, constant: -80),
             pcHand.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -60),
             pcHand.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -50),
+            blood.centerXAnchor.constraint(equalTo: centerXAnchor),
+            blood.centerYAnchor.constraint(equalTo: centerYAnchor),
+            blood.widthAnchor.constraint(equalToConstant: 100),
+            blood.heightAnchor.constraint(equalToConstant: 100),
             paperButton.widthAnchor.constraint(equalToConstant: 80),
             paperButton.heightAnchor.constraint(equalTo: rockButton.widthAnchor),
             paperButton.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -165,6 +188,20 @@ class GameView: UIView {
             scoreProgressSeparator.centerYAnchor.constraint(equalTo: scoreProgressUser.centerYAnchor, constant: -75),
             scoreProgressSeparator.centerXAnchor.constraint(equalTo: scoreProgressUser.centerXAnchor)
         ])
+        
+        if gameMode == .user {
+            changeUserButton.translatesAutoresizingMaskIntoConstraints = false
+            addSubviews(changeUserButton)
+            NSLayoutConstraint.activate([
+                changeUserButton.widthAnchor.constraint(equalToConstant: 100),
+                changeUserButton.heightAnchor.constraint(equalToConstant: 60),
+                changeUserButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+                changeUserButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+            changeUserButton.isEnabled = false
+        }
+        
+        animateHands()
     }
     
     func setupPlayerAvatar(avatar: String?) {
@@ -204,12 +241,18 @@ class GameView: UIView {
         }
     }
     
-    func restartRound() {
-        countDownLabel.text = "0:00"
+    func restartRound(seconds: Int) {
+        switch seconds {
+        case 30:
+            countDownLabel.text = "0:30"
+        default:
+            countDownLabel.text = "1:00"
+        }
         timerProgress.progress = 0
         userHand.image = .maleHand
         pcHand.image = .femaleHand
         setupMainLabel(text: "FIGHT")
+        animateHands()
     }
   
     private func setupMainLabel(text: String) {
@@ -222,29 +265,143 @@ class GameView: UIView {
         }
     }
     
+    private func playWithUser(userTag: Int) {
+        if userSwitched {
+            switch userTag {
+            case 0:
+                pcHand.image = .femaleHandRock
+            case 1:
+                pcHand.image = .femaleHandPaper
+            default:
+                pcHand.image = .femaleHandScissors
+            }
+            userHand.image = userChoice
+            guard let userImage = userHand.image else { return }
+            guard let pcImage = pcHand.image else { return }
+            applyRoundResult(onChoiceMade?(userImage, pcImage))
+            animateHandsClapping(completion: {
+                self.rockButton.isEnabled = true
+                self.paperButton.isEnabled = true
+                self.scissorsButton.isEnabled = true
+            })
+            userSwitched.toggle()
+        } else {
+            switch userTag {
+            case 0:
+                userChoice = .maleHandRock
+            case 1:
+                userChoice = .maleHandPaper
+            default:
+                userChoice = .maleHandScissors
+            }
+            
+            userSwitched.toggle()
+        }
+    }
+    
+    private func playWithPc(userTag: Int) {
+        switch userTag {
+        case 0:
+            userHand.image = .maleHandRock
+        case 1:
+            userHand.image = .maleHandPaper
+        default:
+            userHand.image = .maleHandScissors
+        }
+        pcHand.image = getRandomGesture?()
+        guard let userImage = userHand.image else { return }
+        guard let pcImage = pcHand.image else { return }
+        applyRoundResult(onChoiceMade?(userImage, pcImage))
+        animateHandsClapping(completion: {
+            self.rockButton.isEnabled = true
+            self.paperButton.isEnabled = true
+            self.scissorsButton.isEnabled = true
+        })
+    }
+    
     @objc private func madeChoice(_ sender: UIButton) {
-        stopTimer?()
         sender.layer.cornerRadius = sender.bounds.width / 2
         sender.layer.borderWidth = 4
         sender.layer.borderColor = UIColor.yellowGame.cgColor
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            sender.layer.cornerRadius = 0
-            sender.layer.borderWidth = 0
-            sender.layer.borderColor = nil
-            switch sender.tag {
-            case 0:
-                self?.userHand.image = .maleHandRock
-            case 1:
-                self?.userHand.image = .maleHandPaper
-            default:
-                self?.userHand.image = .maleHandScissors
+        rockButton.isEnabled = false
+        paperButton.isEnabled = false
+        scissorsButton.isEnabled = false
+        if gameMode == .pc {
+            stopTimer?()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+                sender.layer.cornerRadius = 0
+                sender.layer.borderWidth = 0
+                sender.layer.borderColor = nil
+                self?.playWithPc(userTag: sender.tag)
             }
-            self?.pcHand.image = self?.getRandomGesture?()
-            guard let userImage = self?.userHand.image else { return }
-            guard let pcImage = self?.pcHand.image else { return }
-            self?.applyRoundResult(self?.onChoiceMade?(userImage, pcImage))
+        } else {
+            if userSwitched {
+                stopTimer?()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+                    sender.layer.cornerRadius = 0
+                    sender.layer.borderWidth = 0
+                    sender.layer.borderColor = nil
+                    self?.playWithUser(userTag: sender.tag)
+                }
+            } else {
+                changeUserButton.isEnabled = true
+                playWithUser(userTag: sender.tag)
+            }
         }
     }
+    
+    @objc private func changeUserTapped(_ sender: UIButton) {
+        rockButton.isEnabled = true
+        paperButton.isEnabled = true
+        scissorsButton.isEnabled = true
+        for button in [rockButton, paperButton, scissorsButton] {
+            button.layer.cornerRadius = 0
+            button.layer.borderWidth = 0
+            button.layer.borderColor = nil
+        }
+        changeUserButton.isEnabled = false
+    }
+}
 
+// MARK: - Animation
+private extension GameView {
+    func animateHands() {
+        userHand.transform = CGAffineTransform.identity
+        pcHand.transform = CGAffineTransform.identity
+        
+        let scaledTransform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat], animations: {
+            self.userHand.transform = scaledTransform
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 1.0, delay: 0.5, options: [.autoreverse, .repeat], animations: {
+            self.pcHand.transform = scaledTransform
+        }, completion: nil)
+    }
+    
+    func animateHandsClapping(completion: @escaping () -> Void) {
+        let originalTransform = userHand.transform
+        let scaledTransform = originalTransform.scaledBy(x: 1.1, y: 1.3)
+        let rotation = CGAffineTransform(rotationAngle: -10 * .pi / 180)
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.autoreverse, .beginFromCurrentState], animations: {
+            self.userHand.transform = scaledTransform.concatenating(rotation)
+            self.pcHand.transform = scaledTransform.concatenating(rotation)
+        }, completion: { _ in
+            self.userHand.transform = originalTransform
+            self.pcHand.transform = originalTransform
+        })
+        
+        UIView.animate(withDuration: 0.15, delay: 0.0, options: [.curveEaseIn], animations: {
+            self.blood.alpha = 1
+            self.blood.transform = CGAffineTransform(scaleX: 3, y: 3)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.15, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.blood.alpha = 0
+                self.blood.transform = CGAffineTransform.identity
+            }, completion: nil)
+        })
+        completion()
+    }
 }

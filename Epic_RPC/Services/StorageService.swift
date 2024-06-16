@@ -18,13 +18,13 @@ class StorageService {
 
     func getMockPlayers() -> [Player] {
         [
-            .init(image: "character2", name: "Name name", score: 231, victories: 32, loses: 4),
-            .init(image: "character1", name: "Test name", score: 231, victories: 32, loses: 4),
-            .init(image: "character4", name: "Person name", score: 231, victories: 32, loses: 4),
-            .init(image: "character1", name: "OOo name", score: 231, victories: 32, loses: 4),
-            .init(image: "character1", name: "Test name", score: 231, victories: 32, loses: 4),
-            .init(image: "character4", name: "Person name", score: 231, victories: 32, loses: 4),
-            .init(image: "character1", name: "OOo name", score: 231, victories: 32, loses: 4)
+            .init(image: "character2", name: "Tony Newman", score: 23500, victories: 47, loses: 30),
+            .init(image: "character1", name: "Herman Welch", score: 12000, victories: 24, loses: 11),
+            .init(image: "character4", name: "Dollie Mann", score: 7000, victories: 14, loses: 3),
+            .init(image: "character1", name: "Ian Burton", score: 11500, victories: 23, loses: 18),
+            .init(image: "character1", name: "Roxie Hansen", score: 2500, victories: 5, loses: 2),
+            .init(image: "character4", name: "Steven Vaughn", score: 19000, victories: 38, loses: 21),
+            .init(image: "character1", name: "Harriett Single", score: 5500, victories: 11, loses: 4)
         ]
     }
 
@@ -46,7 +46,17 @@ class StorageService {
         if !currentPlayers.contains(where: { $0.name == player.name }) {
             currentPlayers.append(player)
             savePlayers(currentPlayers)
-       }
+        } else {
+            if let index = currentPlayers.firstIndex(where: { $0.name == player.name }) {
+                var user = currentPlayers[index]
+                if user.image != player.image {
+                    user.image = player.image
+                    currentPlayers.remove(at: index)
+                    currentPlayers.insert(user, at: index)
+                    savePlayers(currentPlayers)
+                }
+            }
+        }
     }
     
     ///обновляет количество побед или поражений (и score) по userName
@@ -62,22 +72,16 @@ class StorageService {
             }
             currentPlayers.remove(at: index)
             currentPlayers.insert(user, at: index)
-        }
-    }
-    
-    ///обновляет аватар по userName
-    func updateUserAvatar(username: String, avatar: String) {
-        var currentPlayers = getPlayers()
-        if let index = currentPlayers.firstIndex(where: { $0.name == username }) {
-            var user = currentPlayers[index]
-            user.image = avatar
-            currentPlayers.remove(at: index)
-            currentPlayers.insert(user, at: index)
+            savePlayers(currentPlayers)
         }
     }
     
     ///сохраняет текущие настройки
     func saveSettings(_ settings: Settings) {
+        addPlayer(settings.firstPlayer)
+        if let player2 = settings.secondPlayer {
+            addPlayer(player2)
+        }
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(settings)
@@ -107,6 +111,16 @@ class StorageService {
             }
         }
         return nil
+    }
+    
+    ///возвращает игрока - дефолтного противника
+    func getPcPlayer() -> Player {
+        let currentPlayers = getPlayers()
+        if let index = currentPlayers.firstIndex(where: { $0.name == "PC" }) {
+            return currentPlayers[index]
+        } else {
+            return Player(image: "avatar_pc", name: "PC")
+        }
     }
     
     private func getPlayer(username: String) -> Player? {

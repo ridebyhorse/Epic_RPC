@@ -72,8 +72,12 @@ class LeaderbordPlayerCell: UITableViewCell {
         playerImageView.image = UIImage(named: player.image ?? "character1")
         playerNameLabel.text = player.name
         playerScoreLabel.text = "\(player.score)"
-        let rate: Float = Float(player.victories) / Float(player.victories + player.loses) * 100.0
-        playerRateLabel.text = "\(Int(rate))%"
+        if (player.victories + player.loses) != 0 {
+            let rate: Float = Float(player.victories) / Float(player.victories + player.loses) * 100.0
+            playerRateLabel.text = "\(Int(rate))%"
+        } else {
+            playerRateLabel.text = "0%"
+        }
 
         switch position {
         case 1:

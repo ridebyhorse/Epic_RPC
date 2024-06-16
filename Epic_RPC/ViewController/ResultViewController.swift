@@ -9,7 +9,16 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    let resultView = ResultView()
+    let resultView: ResultView
+    
+    init(result: Bool, scorePlayer: Int, pcPlayerScore: Int) {
+        resultView = ResultView(result: result, playerScore: scorePlayer, pcPlayerScore: pcPlayerScore)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +35,7 @@ class ResultViewController: UIViewController {
         }
         
         let repeatButtonPressed = UIAction { [unowned self] _ in
-//            let fightLoadVC = FightLoadViewController()
-//            navigationController?.pushViewController(fightLoadVC, animated: true)
-            let gameVC = GameViewController()
-            navigationController?.pushViewController(gameVC, animated: true)
+            navigationController?.pushViewController(FightLoadViewController(), animated: true)
         }
         
         resultView.homeButton.addAction(homeButtonPressed, for: .touchUpInside)
