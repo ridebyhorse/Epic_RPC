@@ -6,25 +6,46 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import SnapKit
 
 final class RulesViewController: UIViewController {
+
+    private let navBar = NavBar()
+        .title("Rules")
+        .leftButton(UIImage(named: "back"))
+
     private let rulesView = RulesView()
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view = rulesView
+        setupBindings()
         setNavigationBar()
-        navigationController?.navigationBar.isHidden = false
     }
-    
+
+    private func setupBindings() {
+        navBar.onLeftButtonTap
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+                self?.navigationController?.navigationBar.isHidden = false
+            })
+            .disposed(by: disposeBag)
+    }
+
     private func setNavigationBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 24)]
-        appearance.shadowColor = nil
-        
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.tintColor = .black
-        title = "Rules"
+        view.addSubviews(navBar)
+        navigationController?.navigationBar.isHidden = true
+
+        navBar.snp.makeConstraints { make in
+            make
+                .top
+                .equalTo(view.safeAreaLayoutGuide.snp.top)
+            make
+                .leading.trailing
+                .equalToSuperview()
+        }
     }
 }

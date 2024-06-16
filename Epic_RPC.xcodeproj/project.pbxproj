@@ -26,6 +26,7 @@
 		4D1C13CD2C1C95D800A883C6 /* ChooseAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1C13CC2C1C95D800A883C6 /* ChooseAvatarViewController.swift */; };
 		4D1C13CF2C1C968400A883C6 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1C13CE2C1C968400A883C6 /* CharacterCell.swift */; };
 		4D44DAB82C1EE1E200629F25 /* UILabel + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D44DAB72C1EE1E200629F25 /* UILabel + Ext.swift */; };
+		4D44DABA2C1EE3B400629F25 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D44DAB92C1EE3B400629F25 /* Rule.swift */; };
 		4DC4C5152C1AD8A0000A4FEF /* ChangeUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4C5142C1AD8A0000A4FEF /* ChangeUsernameView.swift */; };
 		4DC4C5172C1AE3E0000A4FEF /* ChangeUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4C5162C1AE3E0000A4FEF /* ChangeUsernameViewController.swift */; };
 		879E01602C1CA0ED00D479AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E015F2C1CA0ED00D479AE /* SettingsViewController.swift */; };
@@ -71,6 +72,7 @@
 		4D1C13CC2C1C95D800A883C6 /* ChooseAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAvatarViewController.swift; sourceTree = "<group>"; };
 		4D1C13CE2C1C968400A883C6 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		4D44DAB72C1EE1E200629F25 /* UILabel + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Ext.swift"; sourceTree = "<group>"; };
+		4D44DAB92C1EE3B400629F25 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Rule.swift; path = ../../../../Rule.swift; sourceTree = "<group>"; };
 		4DC4C5142C1AD8A0000A4FEF /* ChangeUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameView.swift; sourceTree = "<group>"; };
 		4DC4C5162C1AE3E0000A4FEF /* ChangeUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameViewController.swift; sourceTree = "<group>"; };
 		879E015F2C1CA0ED00D479AE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				3CBF8B2D2C179B2C005E21B8 /* Player.swift */,
+				4D44DAB92C1EE3B400629F25 /* Rule.swift */,
 				CBC3A0892C1EB335008DF9D1 /* Music.swift */,
 				CBCC59A82C18457400F194B5 /* Game.swift */,
 				CBB2C8082C1B21FF003FE319 /* Settings.swift */,
@@ -378,6 +381,7 @@
 				4D1C13CF2C1C968400A883C6 /* CharacterCell.swift in Sources */,
 				CBE0C0DC2C15D68300919D1E /* StartViewController.swift in Sources */,
 				CBE0C0BC2C15D5E000919D1E /* SceneDelegate.swift in Sources */,
+				4D44DABA2C1EE3B400629F25 /* Rule.swift in Sources */,
 				4D44DAB82C1EE1E200629F25 /* UILabel + Ext.swift in Sources */,
 				CBE0C0D22C15D67100919D1E /* FightLoadView.swift in Sources */,
 				CBE0C0DE2C15D68300919D1E /* GameViewController.swift in Sources */,
