@@ -14,6 +14,7 @@ final class StartViewController: UIViewController {
         super.viewDidLoad()
         view = startView
         addActions()
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func addActions() {

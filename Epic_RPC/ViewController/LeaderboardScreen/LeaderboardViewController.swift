@@ -23,7 +23,7 @@ class LeaderboardViewController: UIViewController {
     private let playerImage: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.image = .character1
+        imageView.image = UIImage(named: Game.currentSettings.firstPlayer.image!)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -39,7 +39,7 @@ class LeaderboardViewController: UIViewController {
     
     private let playerNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Player 1"
+        label.text = Game.currentSettings.firstPlayer.name
         label.isUserInteractionEnabled = true
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .gray
@@ -272,8 +272,9 @@ extension LeaderboardViewController {
             guard let self = self else { return }
             self.playerNameLabel.text = userName
             self.playerImage.image = .avatarUser
-            StorageService.shared.addPlayer(Player(image: "avatar_user", name: userName))
-            Game().setupGameSettings(settings: Game.currentSettings)
+//            StorageService.shared.addPlayer(Player(image: "avatar_user", name: userName))
+//            Game().setupGameSettings(settings: Game.currentSettings)
+            Game().setupGameSettings(settings: Settings(firstPlayer: Player(image: "avatar_user", name: userName), secondPlayer: Game.currentSettings.secondPlayer, roundTime: Game.currentSettings.roundTime, music: Game.currentSettings.music))
         }
         present(userNameVC, animated: true)
     }
@@ -285,7 +286,7 @@ extension LeaderboardViewController {
         userAvatarVC.getAvatar = { [weak self] image, name in
             guard let self = self else { return }
             self.playerImage.image = image
-            StorageService.shared.addPlayer(Player(image: name, name: Game.currentSettings.firstPlayer.name))
+            StorageService.shared.updateAvatar(name: Game.currentSettings.firstPlayer.name, avatar: name)
             Game().setupGameSettings(settings: Game.currentSettings)
         }
         present(userAvatarVC, animated: true)
