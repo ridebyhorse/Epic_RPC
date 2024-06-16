@@ -79,14 +79,23 @@ private extension SettingsView {
 
 		setGameTime30cec.setTitle("30 sec", for: .normal)
 		setGameTime30cec.titleLabel?.font = .custom(font: .medium, size: 16)
-		setGameTime30cec.backgroundColor = .greenGame
+        if Game.currentSettings.roundTime == .s30 {
+            setGameTime30cec.backgroundColor = .greenGame
+        } else {
+            setGameTime30cec.backgroundColor = .buttonOrange
+        }
+		
 		setGameTime30cec.layer.cornerRadius = 15
         setGameTime30cec.tag = 0
         setGameTime30cec.addTarget(self, action: #selector(choseTime), for: .touchUpInside)
 
 		setGameTime60cec.setTitle("60 sec", for: .normal)
 		setGameTime60cec.titleLabel?.font = setGameTime30cec.titleLabel?.font
-        setGameTime60cec.backgroundColor = .buttonOrange
+        if Game.currentSettings.roundTime == .s60 {
+            setGameTime60cec.backgroundColor = .greenGame
+        } else {
+            setGameTime60cec.backgroundColor = .buttonOrange
+        }
 		setGameTime60cec.layer.cornerRadius = setGameTime30cec.layer.cornerRadius
         setGameTime60cec.tag = 1
         setGameTime60cec.addTarget(self, action: #selector(choseTime), for: .touchUpInside)
@@ -110,7 +119,7 @@ private extension SettingsView {
 		buttonBackground2.layer.masksToBounds = buttonBackground1.layer.masksToBounds
 
 		setMusicButton.tintColor = .white
-		setMusicButton.setTitle("Main Theme", for: .normal) // test
+        setMusicButton.setTitle(Game.currentSettings.music, for: .normal) // test
 		setMusicButton.titleLabel?.font = .custom(font: .regular, size: 14)
 		setMusicButton.setImage(buttonArrowImage, for: .normal)
 		setMusicButton.semanticContentAttribute = .forceRightToLeft
@@ -145,6 +154,11 @@ private extension SettingsView {
         
         switchGameMode.onTintColor = .greenGame
         switchGameMode.addTarget(self, action: #selector(switchedMode), for: .valueChanged)
+        if Game.currentSettings.secondPlayer == nil {
+            switchGameMode.isOn = false
+        } else {
+            switchGameMode.isOn = true
+        }
 
 		addSubview(bottomView)
 		bottomView.addSubview(buttonBackground1)
