@@ -17,10 +17,10 @@ final class StartViewController: UIViewController {
     }
     
     private func addActions() {
-//        let tapSettings = UIAction { [unowned self] _ in
-//            let settingsVC = SettingsViewController()
-//            navigationController?.pushViewController(settingsVC, animated: true)
-//        }
+        let tapSettings = UIAction { [unowned self] _ in
+            let settingsVC = SettingsViewController()
+            navigationController?.pushViewController(settingsVC, animated: true)
+        }
         
         let tapRules = UIAction { [unowned self] _ in
             let rulesVC = RulesViewController()
@@ -39,7 +39,7 @@ final class StartViewController: UIViewController {
             navigationController?.pushViewController(resultsVC, animated: true)
         }
         
-//        startView.settingsButton.addAction(tapSettings, for: .touchUpInside)
+        startView.settingsButton.addAction(tapSettings, for: .touchUpInside)
         startView.rulesButton.addAction(tapRules, for: .touchUpInside)
         startView.startButton.addAction(tapStart, for: .touchUpInside)
         startView.resultsButton.addAction(tapResults, for: .touchUpInside)

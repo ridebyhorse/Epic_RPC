@@ -27,6 +27,8 @@
 		4D1C13CF2C1C968400A883C6 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1C13CE2C1C968400A883C6 /* CharacterCell.swift */; };
 		4DC4C5152C1AD8A0000A4FEF /* ChangeUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4C5142C1AD8A0000A4FEF /* ChangeUsernameView.swift */; };
 		4DC4C5172C1AE3E0000A4FEF /* ChangeUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4C5162C1AE3E0000A4FEF /* ChangeUsernameViewController.swift */; };
+		879E01602C1CA0ED00D479AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E015F2C1CA0ED00D479AE /* SettingsViewController.swift */; };
+		879E01622C1CA22A00D479AE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E01612C1CA22A00D479AE /* SettingsView.swift */; };
 		CB3989262C16450700E77097 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3989252C16450700E77097 /* Rubik-Bold.ttf */; };
 		CB3989292C16462900E77097 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3989272C16462900E77097 /* Rubik-Regular.ttf */; };
 		CB39892E2C1646C800E77097 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */; };
@@ -64,6 +66,8 @@
 		4D1C13CE2C1C968400A883C6 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		4DC4C5142C1AD8A0000A4FEF /* ChangeUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameView.swift; sourceTree = "<group>"; };
 		4DC4C5162C1AE3E0000A4FEF /* ChangeUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameViewController.swift; sourceTree = "<group>"; };
+		879E015F2C1CA0ED00D479AE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		879E01612C1CA22A00D479AE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CB3989252C16450700E77097 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		CB3989272C16462900E77097 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		CB39892D2C1646C800E77097 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				CBE0C0DA2C15D68300919D1E /* ResultViewController.swift */,
 				CBE0C0D82C15D68300919D1E /* RulesViewController.swift */,
 				CBE0C0D72C15D68300919D1E /* StartViewController.swift */,
+				879E015F2C1CA0ED00D479AE /* SettingsViewController.swift */,
 				3CBF8B2F2C179B3A005E21B8 /* LeaderboardScreen */,
 			);
 			path = ViewController;
@@ -233,6 +238,7 @@
 				CBE0C0CE2C15D67100919D1E /* ResultView.swift */,
 				CBE0C0D12C15D67100919D1E /* RulesView.swift */,
 				CBE0C0CF2C15D67100919D1E /* StartView.swift */,
+				879E01612C1CA22A00D479AE /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -355,11 +361,13 @@
 				CBE0C0D22C15D67100919D1E /* FightLoadView.swift in Sources */,
 				CBE0C0DE2C15D68300919D1E /* GameViewController.swift in Sources */,
 				3CBF8B282C179B20005E21B8 /* Uiview+Ext.swift in Sources */,
+				879E01622C1CA22A00D479AE /* SettingsView.swift in Sources */,
 				4DC4C5152C1AD8A0000A4FEF /* ChangeUsernameView.swift in Sources */,
 				CBCC59A92C18457400F194B5 /* Game.swift in Sources */,
 				4D1C13CB2C1C945700A883C6 /* ChooseAvatarView.swift in Sources */,
 				3CBF8B332C179B3A005E21B8 /* LeaderbordPlayerCell.swift in Sources */,
 				CBE0C0D52C15D67100919D1E /* GameView.swift in Sources */,
+				879E01602C1CA0ED00D479AE /* SettingsViewController.swift in Sources */,
 				3CBF8B2E2C179B2C005E21B8 /* Player.swift in Sources */,
 				CBB2C8092C1B21FF003FE319 /* Settings.swift in Sources */,
 				4D1C13CD2C1C95D800A883C6 /* ChooseAvatarViewController.swift in Sources */,
@@ -433,7 +441,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -490,7 +498,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -514,6 +522,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -524,6 +533,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -544,6 +554,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -554,6 +565,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
