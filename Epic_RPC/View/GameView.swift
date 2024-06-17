@@ -22,6 +22,14 @@ class GameView: UIView {
     
     var stopTimer: (() -> Void)?
     
+    var onPause = false {
+        didSet {
+            if onPause == false {
+                continueAfterPause()
+            }
+        }
+    }
+    private var senderTag = 0
     private let gameMode: GameMode
     private var userSwitched = false
     private var userChoice = UIImage()
@@ -329,24 +337,61 @@ class GameView: UIView {
         if gameMode == .pc {
             stopTimer?()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-                sender.layer.cornerRadius = 0
-                sender.layer.borderWidth = 0
-                sender.layer.borderColor = nil
-                self?.playWithPc(userTag: sender.tag)
+                if let navVC = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                    if navVC.topViewController?.presentedViewController == nil {
+                        sender.layer.cornerRadius = 0
+                        sender.layer.borderWidth = 0
+                        sender.layer.borderColor = nil
+                        self?.playWithPc(userTag: sender.tag)
+                    } else {
+                        self?.onPause = true
+                        self?.senderTag = sender.tag
+                    }
+                }
+                
             }
         } else {
             if userSwitched {
                 stopTimer?()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-                    sender.layer.cornerRadius = 0
-                    sender.layer.borderWidth = 0
-                    sender.layer.borderColor = nil
-                    self?.playWithUser(userTag: sender.tag)
+                    if let navVC = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                        if navVC.topViewController?.presentedViewController == nil {
+                            sender.layer.cornerRadius = 0
+                            sender.layer.borderWidth = 0
+                            sender.layer.borderColor = nil
+                            self?.playWithUser(userTag: sender.tag)
+                        } else {
+                            self?.onPause = true
+                            self?.senderTag = sender.tag
+                        }
+                    }
                 }
             } else {
                 changeUserButton.isEnabled = true
                 playWithUser(userTag: sender.tag)
             }
+        }
+    }
+    
+    private func continueAfterPause() {
+        if gameMode == .pc {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
+                [self?.rockButton, self?.paperButton, self?.scissorsButton].forEach({ button in
+                        button?.layer.cornerRadius = 0
+                        button?.layer.borderWidth = 0
+                        button?.layer.borderColor = nil
+                })
+                self?.playWithPc(userTag: self?.senderTag ?? 0)
+            }
+        } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
+                    [self?.rockButton, self?.paperButton, self?.scissorsButton].forEach({ button in
+                            button?.layer.cornerRadius = 0
+                            button?.layer.borderWidth = 0
+                            button?.layer.borderColor = nil
+                    })
+                    self?.playWithUser(userTag: self?.senderTag ?? 0)
+                }
         }
     }
     

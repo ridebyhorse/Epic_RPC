@@ -18,7 +18,6 @@ class GameViewController: UIViewController {
         case `continue`
         case stop
     }
-    
     private let game = Game()
     private let gameView: GameView
     private var timer = Timer()
@@ -56,10 +55,10 @@ class GameViewController: UIViewController {
         gameView = GameView(gameMode: gameMode)
         switch Game.currentSettings.roundTime {
         case .s30:
-            secondsCount = 30
+            secondsCount = 29
             secondsTotal = 30.0
         case .s60:
-            secondsCount = 60
+            secondsCount = 59
             secondsTotal = 60.0
         }
         super.init(nibName: nil, bundle: nil)
@@ -91,6 +90,7 @@ class GameViewController: UIViewController {
         gameView.setupPlayerAvatar(avatar: Game.currentSettings.firstPlayer.image)
         gameView.setupSecondPlayerAvatar(avatar: Game.currentSettings.secondPlayer?.image)
         view = gameView
+        gameView.restartRound(seconds: Int(secondsTotal))
         view.addSubviews(navBar)
         view.subviews.forEach({$0.translatesAutoresizingMaskIntoConstraints = false})
         
@@ -103,7 +103,7 @@ class GameViewController: UIViewController {
     private func setTimer(action: TimerAction) {
         switch action {
         case .start:
-            secondsCount = Int(secondsTotal)
+            secondsCount = Int(secondsTotal - 1.0)
             timer.invalidate()
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
         case .continue:
@@ -204,22 +204,24 @@ class GameViewController: UIViewController {
     }
     
     private func continueGame() {
-        navigationController?.navigationBar.isHidden = true
-        setTimer(action: .continue)
         musicPlayer.play()
+        if gameView.onPause {
+            gameView.onPause = false
+        } else {
+            setTimer(action: .continue)
+        }
+        
+        
     }
     
     @objc private func updateCountDown(_ sender: Timer) {
         if secondsCount > 0 {
-            if secondsTotal != Float(secondsCount) {
-                gameView.updateTimeProgress(on: 1.0 / secondsTotal)
-            }
-            let minutesCount = String(secondsCount / 60)
             if secondsCount < 10 {
-                gameView.updateTimeLabel(text: minutesCount + ":0" + String(secondsCount))
+                gameView.updateTimeLabel(text: "0:0" + String(secondsCount))
             } else {
-                gameView.updateTimeLabel(text: minutesCount + ":" + String(secondsCount))
+                gameView.updateTimeLabel(text: "0:" + String(secondsCount))
             }
+            gameView.updateTimeProgress(on: 1.0 / (secondsTotal - 1))
             secondsCount -= 1
         } else {
             setTimer(action: .stop)
