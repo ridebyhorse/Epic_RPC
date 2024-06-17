@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
         case `continue`
         case stop
     }
+    private var pauseAtResult = false
     private let game = Game()
     private let gameView: GameView
     private var timer = Timer()
@@ -138,8 +139,12 @@ class GameViewController: UIViewController {
     
     private func restartRound() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            self?.setTimer(action: .start)
-            self?.gameView.restartRound(seconds: Int(self?.secondsTotal ?? 30))
+            if self?.presentedViewController == nil {
+                self?.setTimer(action: .start)
+                self?.gameView.restartRound(seconds: Int(self?.secondsTotal ?? 30))
+            } else {
+                self?.pauseAtResult = true
+            }
         }
     }
     
@@ -208,7 +213,15 @@ class GameViewController: UIViewController {
         if gameView.onPause {
             gameView.onPause = false
         } else {
-            setTimer(action: .continue)
+            if pauseAtResult {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
+                    self?.setTimer(action: .start)
+                    self?.gameView.restartRound(seconds: Int(self?.secondsTotal ?? 30.0))
+                    self?.pauseAtResult = false
+                }
+            } else {
+                setTimer(action: .continue)
+            }
         }
         
         
