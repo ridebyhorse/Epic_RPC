@@ -90,7 +90,7 @@ class LeaderboardViewController: UIViewController {
         return table
     }()
     
-    private let players: [Player] = StorageService.shared.getPlayers().sorted { $0.score > $1.score }
+    private var players: [Player] = StorageService.shared.getPlayers().sorted { $0.score > $1.score }
     
     private let disposeBag = DisposeBag()
     
@@ -273,7 +273,9 @@ extension LeaderboardViewController {
             self.playerNameLabel.text = userName
             Game().setupGameSettings(settings: Settings(firstPlayer: Player(image: "avatar_user", name: userName), secondPlayer: Game.currentSettings.secondPlayer, roundTime: Game.currentSettings.roundTime, music: Game.currentSettings.music))
             
-            self.playerImage.image = UIImage(named: Game.currentSettings.firstPlayer.image!) 
+            self.playerImage.image = UIImage(named: Game.currentSettings.firstPlayer.image!)
+            players = StorageService.shared.getPlayers().sorted { $0.score > $1.score }
+            tableView.reloadData()
         }
         present(userNameVC, animated: true)
     }
@@ -287,7 +289,10 @@ extension LeaderboardViewController {
             self.playerImage.image = image
             StorageService.shared.updateAvatar(name: Game.currentSettings.firstPlayer.name, avatar: name)
             Game().setupGameSettings(settings: Game.currentSettings)
+            players = StorageService.shared.getPlayers().sorted { $0.score > $1.score }
+            tableView.reloadData()
         }
         present(userAvatarVC, animated: true)
     }
+    
 }
