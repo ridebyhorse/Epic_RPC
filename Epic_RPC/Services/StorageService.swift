@@ -16,18 +16,6 @@ class StorageService {
 
     private init() {}
 
-    func getMockPlayers() -> [Player] {
-        [
-            .init(image: "character2", name: "Tony Newman", score: 23500, victories: 47, loses: 30),
-            .init(image: "character1", name: "Herman Welch", score: 12000, victories: 24, loses: 11),
-            .init(image: "character4", name: "Dollie Mann", score: 7000, victories: 14, loses: 3),
-            .init(image: "character1", name: "Ian Burton", score: 11500, victories: 23, loses: 18),
-            .init(image: "character1", name: "Roxie Hansen", score: 2500, victories: 5, loses: 2),
-            .init(image: "character4", name: "Steven Vaughn", score: 19000, victories: 38, loses: 21),
-            .init(image: "character1", name: "Harriett Single", score: 5500, victories: 11, loses: 4)
-        ]
-    }
-
     func getPlayers() -> [Player] {
         if let data = userDefaults.data(forKey: playersKey) {
             do {
@@ -41,12 +29,11 @@ class StorageService {
         return []
     }
 
-    func addPlayer(_ player: Player) {
+    private func addPlayer(_ player: Player) {
         var currentPlayers = getPlayers()
         if !currentPlayers.contains(where: { $0.name == player.name }) {
             currentPlayers.append(player)
             savePlayers(currentPlayers)
-            
         }
     }
     
@@ -55,12 +42,10 @@ class StorageService {
         if let index = currentPlayers.firstIndex(where: { $0.name == name }) {
             var user = currentPlayers[index]
             user.image = avatar
-            print(user)
             currentPlayers.remove(at: index)
             currentPlayers.insert(user, at: index)
             savePlayers(currentPlayers)
         }
-        
     }
     
     ///обновляет количество побед или поражений (и score) по userName
@@ -123,7 +108,9 @@ class StorageService {
         if let index = currentPlayers.firstIndex(where: { $0.name == "PC" }) {
             return currentPlayers[index]
         } else {
-            return Player(image: "avatar_pc", name: "PC")
+            let pcPlayer = Player(image: "avatar_pc", name: "PC")
+            addPlayer(pcPlayer)
+            return pcPlayer
         }
     }
     

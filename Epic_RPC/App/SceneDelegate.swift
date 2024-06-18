@@ -20,7 +20,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             Game().setupGameSettings(settings: settings)
         } else {
             StorageService.shared.saveSettings(Game.currentSettings)
-            StorageService.shared.addPlayer(Player(image: "avatar_pc", name: "PC"))
         }
         let navigationVC = UINavigationController(rootViewController: StartViewController())
         window?.rootViewController = navigationVC

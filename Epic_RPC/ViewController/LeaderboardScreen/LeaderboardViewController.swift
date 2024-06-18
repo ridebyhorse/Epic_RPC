@@ -271,8 +271,6 @@ extension LeaderboardViewController {
         userNameVC.getUsername = { [weak self] userName in
             guard let self = self else { return }
             self.playerNameLabel.text = userName
-//            StorageService.shared.addPlayer(Player(image: "avatar_user", name: userName))
-//            Game().setupGameSettings(settings: Game.currentSettings)
             Game().setupGameSettings(settings: Settings(firstPlayer: Player(image: "avatar_user", name: userName), secondPlayer: Game.currentSettings.secondPlayer, roundTime: Game.currentSettings.roundTime, music: Game.currentSettings.music))
             
             self.playerImage.image = UIImage(named: Game.currentSettings.firstPlayer.image!) 

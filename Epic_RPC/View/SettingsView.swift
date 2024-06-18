@@ -9,13 +9,11 @@ import UIKit
 
 final class SettingsView: UIView {
 
-//	private var friendPlayerIsHide = false
-    
     var onClose: (() -> Settings)?
     
-    private var time: RoundTime = .s30
-    private var music: Music = .mainTheme
-    private var gameMode: GameMode = .pc
+    private var time: RoundTime
+    private var music: String
+    private var gameMode: GameMode
 
 	//MARK: - UI Elements
 
@@ -40,15 +38,15 @@ final class SettingsView: UIView {
 
 	private let buttonArrowImage = UIImage(systemName: "chevron.right")
 
-	//players
-//	let firstPlayerImage = UIImageView()
-//	let secondPlayerImage = UIImageView()
-//
-//	let firstPlayerNameButton = UIButton()
-//	let secondPlayerNameButton = UIButton()
-
 	//MARK: - Lifecycle
 	override init(frame: CGRect) {
+        time = Game.currentSettings.roundTime
+        music = Game.currentSettings.music ?? "Main Theme"
+        if Game.currentSettings.secondPlayer == nil {
+            gameMode = .pc
+        } else {
+            gameMode = .user
+        }
 		super.init(frame: frame)
         onClose = { self.getSettings() }
 		setupViews()
@@ -127,15 +125,15 @@ private extension SettingsView {
             return [
                 UIAction(title: "Main Theme", image: nil, handler: { (_) in
                     self.setMusicButton.setTitle("Main Theme", for: .normal)
-                    self.music = .mainTheme
+                    self.music = "Main Theme"
                 }),
                 UIAction(title: "Bass Theme", image: nil, handler: { (_) in
                     self.setMusicButton.setTitle("Bass Theme", for: .normal)
-                    self.music = .bassTheme
+                    self.music = "Bass Theme"
                 }),
                 UIAction(title: "Tense Theme", image: nil, handler: { (_) in
                     self.setMusicButton.setTitle("Tense Theme", for: .normal)
-                    self.music = .tenseTheme
+                    self.music = "Tense Theme"
                 })
             ]
         }
@@ -168,29 +166,6 @@ private extension SettingsView {
 		buttonBackground2.addSubview(gameModeLabel)
 		buttonBackground2.addSubview(switchGameMode)
 
-		//players
-//		firstPlayerImage.image = .avatarUser
-//		secondPlayerImage.image = .avatarPc
-//
-//		firstPlayerNameButton.setTitle("Player 1", for: .normal)
-//		firstPlayerNameButton.titleLabel?.font = .custom(font: .bold, size: 16)
-//		firstPlayerNameButton.setTitleColor(.systemRed, for: .normal) // test
-//		firstPlayerNameButton.layer.cornerRadius = 20
-//		firstPlayerNameButton.layer.borderWidth = 1
-//		firstPlayerNameButton.layer.borderColor = UIColor.systemGray4.cgColor
-//
-//		secondPlayerNameButton.setTitle("Player 2", for: .normal)
-//		secondPlayerNameButton.titleLabel?.font = firstPlayerNameButton.titleLabel?.font
-//		secondPlayerNameButton.setTitleColor(.systemCyan, for: .normal) // test
-//		secondPlayerNameButton.layer.cornerRadius = firstPlayerNameButton.layer.cornerRadius
-//		secondPlayerNameButton.layer.borderWidth = firstPlayerNameButton.layer.borderWidth
-//		secondPlayerNameButton.layer.borderColor = firstPlayerNameButton.layer.borderColor
-
-//		addSubview(firstPlayerImage)
-//		addSubview(secondPlayerImage)
-//		addSubview(firstPlayerNameButton)
-//		addSubview(secondPlayerNameButton)
-
 		setupConstraints()
 	}
 
@@ -208,10 +183,6 @@ private extension SettingsView {
 		gameModeLabel.translatesAutoresizingMaskIntoConstraints = false
 		setMusicButton.translatesAutoresizingMaskIntoConstraints = false
 		switchGameMode.translatesAutoresizingMaskIntoConstraints = false
-//		firstPlayerImage.translatesAutoresizingMaskIntoConstraints = false
-//		secondPlayerImage.translatesAutoresizingMaskIntoConstraints = false
-//		firstPlayerNameButton.translatesAutoresizingMaskIntoConstraints = false
-//		secondPlayerNameButton.translatesAutoresizingMaskIntoConstraints = false
 
 		NSLayoutConstraint.activate([
 			//top
@@ -261,26 +232,6 @@ private extension SettingsView {
 
 			switchGameMode.trailingAnchor.constraint(equalTo: setMusicButton.trailingAnchor),
 			switchGameMode.centerYAnchor.constraint(equalTo: buttonBackground2.centerYAnchor)
-
-//			firstPlayerImage.topAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: 22),
-//			firstPlayerImage.leadingAnchor.constraint(equalTo: buttonBackground1.leadingAnchor),
-//			firstPlayerImage.heightAnchor.constraint(equalToConstant: 46),
-//			firstPlayerImage.widthAnchor.constraint(equalTo: firstPlayerImage.heightAnchor),
-//
-//			secondPlayerImage.topAnchor.constraint(equalTo: firstPlayerImage.bottomAnchor, constant: 22),
-//			secondPlayerImage.leadingAnchor.constraint(equalTo: buttonBackground1.leadingAnchor),
-//			secondPlayerImage.heightAnchor.constraint(equalToConstant: 46),
-//			secondPlayerImage.widthAnchor.constraint(equalTo: secondPlayerImage.heightAnchor),
-//
-//			firstPlayerNameButton.topAnchor.constraint(equalTo: firstPlayerImage.topAnchor),
-//			firstPlayerNameButton.leadingAnchor.constraint(equalTo: firstPlayerImage.trailingAnchor, constant: 7),
-//			firstPlayerNameButton.trailingAnchor.constraint(equalTo: buttonBackground2.trailingAnchor),
-//			firstPlayerNameButton.bottomAnchor.constraint(equalTo: firstPlayerImage.bottomAnchor),
-//
-//			secondPlayerNameButton.topAnchor.constraint(equalTo: secondPlayerImage.topAnchor),
-//			secondPlayerNameButton.leadingAnchor.constraint(equalTo: firstPlayerImage.trailingAnchor, constant: 7),
-//			secondPlayerNameButton.trailingAnchor.constraint(equalTo: buttonBackground2.trailingAnchor),
-//			secondPlayerNameButton.bottomAnchor.constraint(equalTo: secondPlayerImage.bottomAnchor),
 		])
 	}
     
@@ -288,11 +239,11 @@ private extension SettingsView {
         let user = Game.currentSettings.firstPlayer
         let secondUser: Player?
         if gameMode == .user {
-            secondUser = Player(image: "avatar_pc", name: "User2")
+            secondUser = Player(image: "avatar_pc", name: "Second User")
         } else {
             secondUser = nil
         }
-        return Settings(firstPlayer: user, secondPlayer: secondUser, roundTime: time, music: music.rawValue)
+        return Settings(firstPlayer: user, secondPlayer: secondUser, roundTime: time, music: music)
     }
     
     @objc private func choseTime(_ sender: UIButton) {

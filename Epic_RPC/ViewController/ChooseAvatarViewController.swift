@@ -50,13 +50,13 @@ class ChooseAvatarViewController: UIViewController {
             case 2:
                 name = "character3"
             case 3:
-                name = "character4"
+                name = "character6"
             case 4:
                 name = "character5"
             case 5:
-                name = "character6"
-            case 6:
                 name = "character7"
+            case 6:
+                name = "character4"
             case 7:
                 name = "character8"
             default:
